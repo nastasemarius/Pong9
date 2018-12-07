@@ -26,9 +26,8 @@ namespace Pong9.Data.Entities
             return instance;
         }
 
-        public void UpdateInvite(DateTime createdAt, User source, User destination, Booking booking)
+        public void UpdateInvite(User source, User destination, Booking booking)
         {
-            CreatedAt = createdAt;
             Source = source;
             Destination = destination;
             Booking = booking;
