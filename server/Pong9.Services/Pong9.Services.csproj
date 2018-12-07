@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Pong9.IRepositories\Pong9.IRepositories.csproj" />
+    <ProjectReference Include="..\Pong9.IServices\Pong9.IServices.csproj" />
+    <ProjectReference Include="..\Pong9.Repositories\Pong9.Repositories.csproj" />
+  </ItemGroup>
+
+</Project>

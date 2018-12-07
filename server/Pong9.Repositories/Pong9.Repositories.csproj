@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Pong9.IRepositories\Pong9.IRepositories.csproj" />
+    <ProjectReference Include="..\Pong9.Persistence\Pong9.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>
