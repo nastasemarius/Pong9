@@ -6,3 +6,22 @@
 .logo {
   height: 45px;
 }
+
+span.status {
+  display: inline-block;
+  border-radius: 100%;
+  margin-right: 5px;
+  width: 12px;
+  height: 12px;
+}
+
+.green{
+  background-color: green;
+}
+
+.yellow{
+  background-color: yellow;
+}
+.red{
+  background-color: red;
+}
