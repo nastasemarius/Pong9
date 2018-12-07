@@ -2,8 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { MatCardModule, MatIconModule, MatToolbarModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormvalidatorDirective } from './directives/formvalidator.directive';
+import {
+  MatCardModule,
+  MatIconModule,
+  MatToolbarModule,
+  MatButtonModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatTabsModule
+} from '@angular/material';
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -15,16 +24,22 @@ import { FormvalidatorDirective } from './directives/formvalidator.directive';
     MatCardModule,
     MatIconModule,
     MatToolbarModule,
+    MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    FlexLayoutModule,
+    MatTabsModule
   ],
   exports: [
+    MatInputModule,
+    MatFormFieldModule,
     MatCardModule,
     MatIconModule,
     MatToolbarModule,
     NavbarComponent,
-    MatFormFieldModule,
-    MatInputModule
+    MatButtonModule,
+    FlexLayoutModule,
+    MatTabsModule
   ]
 })
 export class CoreModule { }
