@@ -1,33 +1,48 @@
 ﻿using Pong9.IRepositories;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using Pong9.Data.DTO;
+using Pong9.Data.Entities;
+using Pong9.Persistence;
 
 namespace Pong9.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        public void CreateUser(User user)
-        {
-            throw new NotImplementedException();
-        }
+        private readonly ApplicationDbContext _applicationDbContext;
 
-        public void DeleteUser(User user)
+        public UserRepository(ApplicationDbContext applicationDbContext)
         {
-            throw new NotImplementedException();
-        }
-
-        public void EditUser(User user)
-        {
-            throw new NotImplementedException();
+            _applicationDbContext = applicationDbContext;
         }
 
         public IEnumerable<User> GetAllUsers()
         {
-            throw new NotImplementedException();
+            return _applicationDbContext.Users.ToList();
         }
 
         public User GetUserById(Guid id)
+        {
+            return _applicationDbContext.Users.SingleOrDefault(user => user.UserId == id);
+        }
+
+        public void CreateUser(UserDTO userDto)
+        {
+            var user = new User();
+            user.UpdateUser(userDto.FirstName, userDto.LastName, userDto.Status, userDto.WorkSpaceId, userDto.Roles);
+
+            _applicationDbContext.Users.Add(user);
+            _applicationDbContext.SaveChanges();
+        }
+
+        public void EditUser(UserDTO user)
+        {
+            //
+        }
+
+        public void DeleteUser(User user)
         {
             throw new NotImplementedException();
         }

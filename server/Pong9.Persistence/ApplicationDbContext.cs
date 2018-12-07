@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Pong9.Data.Entities;
 
 namespace Pong9.Persistence
 {
-    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
+    public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -22,6 +20,8 @@ namespace Pong9.Persistence
 
         //    base.OnModelCreating(modelBuilder);
         //}
+
+        public DbSet<User> Users { get; set; }
 
         public DbSet<Booking> Bookings { get; set; }
 
