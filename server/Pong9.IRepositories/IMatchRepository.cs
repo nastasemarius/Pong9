@@ -1,6 +1,8 @@
-﻿using Pong9.Data.Entities;
-using System;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Pong9.Data.DTO;
+using Pong9.Data.Entities;
 
 namespace Pong9.IRepositories
 {
@@ -8,8 +10,8 @@ namespace Pong9.IRepositories
     {
         IEnumerable<Match> GetAllMatches();
         Match GetMatchById(Guid id);
-        void CreateMatch(Match match);
-        void EditMatch(Match match);
+        void CreateMatch(MatchDTO match);
+        void EditMatch(Guid id, MatchDTO match);
         void DeleteMatch(Match match);
     }
 }

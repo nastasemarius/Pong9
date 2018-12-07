@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Pong9.Data.DTO;
 using Pong9.Data.Enums;
 
 namespace Pong9.Data.Entities
@@ -21,15 +22,24 @@ namespace Pong9.Data.Entities
 
         public User SecondPlayerTeammate { get; set; }
 
-        public Match CreateMatch()
+        public static Match CreateMatch()
         {
             var instance = new Match
             {
-                MatchId = Guid.NewGuid(),
-                BookingId = Guid.NewGuid()
+                MatchId = Guid.NewGuid()
             };
 
             return instance;
+        }
+
+        public void UpdateMatch(MatchType type, Guid bookingId, User firstPlayer, User secondPlayer, User firstPlayerTeammate, User secondPlayerTeammate)
+        {
+            Type = type;
+            BookingId = bookingId;
+            FirstPlayer = firstPlayer;
+            SecondPlayer = secondPlayer;
+            FirstPlayerTeammate = firstPlayerTeammate;
+            SecondPlayerTeammate = secondPlayerTeammate;
         }
     }
 }
