@@ -48,4 +48,8 @@ export class UserProfileComponent implements OnInit {
     console.log(this.user.value);
   }
 
+  resetProfile() {
+
+  }
+
 }

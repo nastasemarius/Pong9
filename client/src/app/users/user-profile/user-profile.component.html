@@ -1,25 +1,24 @@
-<div class="user-profile-container" fxLayout="row" fxLayoutAlign="center" fxFlexFill>
-  <div fxFlex="40" fxLayout="column" fxLayoutAlign="center">
-    <mat-card>
-      <mat-card-title>Edit user profile</mat-card-title>
-      <form [formGroup]="user" *ngIf="user">
-        <mat-form-field>
-          <input matInput placeholder="Username" formControlName="username" readonly>
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Email" formControlName="email">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Workspace" formControlName="workspace" readonly>
-          <button matSuffix mat-icon-button matTooltip="Leave workspace" (click)="onLeaveWorkspace()">
-            <mat-icon>close</mat-icon>
-          </button>
-        </mat-form-field>
 
-        <button mat-raised-button color="primary" (click)="saveProfile()">Save</button>
-        <button mat-button [routerLink]="['/dashboard']">Dashboard</button>
-      </form>
-    </mat-card>
-  </div>
+
+<div class="edit-user-profile" fxFlex="40" fxLayout="column" fxLayoutAlign="center">
+  <h2>Edit user profile</h2>
+  <form [formGroup]="user" *ngIf="user">
+    <mat-form-field>
+      <input matInput placeholder="Username" formControlName="username" readonly>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Email" formControlName="email">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Workspace" formControlName="workspace" readonly>
+      <button matSuffix mat-icon-button matTooltip="Leave workspace" (click)="onLeaveWorkspace()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="saveProfile()">Save</button>
+    <button mat-raised-button color="warn" (click)="resetProfile()">Reset</button>
+
+  </form>
 </div>
 
