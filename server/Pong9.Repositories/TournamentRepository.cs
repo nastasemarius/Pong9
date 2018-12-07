@@ -13,6 +13,12 @@ namespace Pong9.Repositories
     {
         private readonly ApplicationDbContext _applicationDbContext;
 
+        public TournamentRepository(ApplicationDbContext applicationDbContext)
+        {
+            _applicationDbContext = applicationDbContext;
+        }
+
+
         public IEnumerable<Tournament> GetAllTournaments()
         {
             return _applicationDbContext.Tournaments.ToList();
