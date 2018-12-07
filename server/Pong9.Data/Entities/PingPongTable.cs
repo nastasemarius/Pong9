@@ -17,7 +17,7 @@ namespace Pong9.Data.Entities
 
         public ICollection<Booking> Bookings { get; set; }
 
-        public PingPongTable CreatePingPongTable()
+        public static PingPongTable CreatePingPongTable()
         {
             var instance = new PingPongTable
             {
@@ -30,9 +30,12 @@ namespace Pong9.Data.Entities
             return instance;
         }
 
-        public void UpdatePingPongTable(string name, ICollection<Booking> bookings)
+        public void UpdatePingPongTable(string name, ICollection<Booking> bookings, DateTime startingHour,
+            DateTime endingHour)
         {
             Name = name;
+            StartingHour = startingHour;
+            EndingHour = endingHour;
             Bookings = bookings;
         }
     }

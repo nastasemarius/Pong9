@@ -1,6 +1,7 @@
 ﻿using Pong9.Data.Entities;
 using System;
 using System.Collections.Generic;
+using Pong9.Data.DTO;
 
 namespace Pong9.IRepositories
 {
@@ -8,8 +9,8 @@ namespace Pong9.IRepositories
     {
         IEnumerable<Invite> GetAllInvites();
         Invite GetInviteById(Guid id);
-        void CreateInvite(Invite invite);
-        void EditInvite(Invite invite);
+        void CreateInvite(InviteDTO inviteDto);
+        void EditInvite(Guid id, InviteDTO inviteDto);
         void DeleteInvite(Invite invite);
     }
 }

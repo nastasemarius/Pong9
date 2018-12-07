@@ -1,6 +1,7 @@
 ﻿using Pong9.Data.Entities;
 using System;
 using System.Collections.Generic;
+using Pong9.Data.DTO;
 
 namespace Pong9.IRepositories
 {
@@ -8,8 +9,8 @@ namespace Pong9.IRepositories
     {
         IEnumerable<Booking> GetAllBookings();
         Booking GetBookingById(Guid id);
-        void CreateBooking(Booking Booking);
-        void EditBooking(Booking Booking);
-        void DeleteBooking(Booking Booking);
+        void CreateBooking(BookingDTO bookingDto);
+        void EditBooking(Guid id, BookingDTO bookingDto);
+        void DeleteBooking(Booking booking);
     }
 }

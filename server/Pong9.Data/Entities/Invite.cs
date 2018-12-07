@@ -15,7 +15,7 @@ namespace Pong9.Data.Entities
 
         public Booking Booking { get; set; }
 
-        public Invite CreateInvite()
+        public static Invite CreateInvite()
         {
             var instance = new Invite
             {

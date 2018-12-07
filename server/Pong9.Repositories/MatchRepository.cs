@@ -11,8 +11,12 @@ namespace Pong9.Repositories
 {
     public class MatchRepository : IMatchRepository
     {
-
         private readonly ApplicationDbContext _applicationDbContext;
+
+        public MatchRepository(ApplicationDbContext applicationDbContext)
+        {
+            _applicationDbContext = applicationDbContext;
+        }
 
         public IEnumerable<Match> GetAllMatches()
         {

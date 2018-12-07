@@ -1,6 +1,7 @@
 ﻿using Pong9.Data.Entities;
 using System;
 using System.Collections.Generic;
+using Pong9.Data.DTO;
 
 namespace Pong9.IRepositories
 {
@@ -8,8 +9,8 @@ namespace Pong9.IRepositories
     {
         IEnumerable<PingPongTable> GetAllPingPongTables();
         PingPongTable GetPingPongTableById(Guid id);
-        void CreatePingPongTable(PingPongTable pingPongTable);
-        void EditPingPongTable(PingPongTable pingPongTable);
+        void CreatePingPongTable(PingPongTableDTO pingPongTableDto);
+        void EditPingPongTable(Guid id, PingPongTableDTO pingPongTableDto);
         void DeletePingPongTable(PingPongTable pingPongTable);
     }
 }
