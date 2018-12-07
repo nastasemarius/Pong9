@@ -48,6 +48,10 @@ export class AuthenticationService {
     }
     return true;
   }
+  logout(): void {
+    localStorage.clear();
+    this.router.navigate(['/login']);
+  }
   private getTokenInfo(token): any {
     return this.jwtHelper.decodeToken(token);
   }

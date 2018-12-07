@@ -25,6 +25,9 @@
           <button mat-raised-button type="submit" [disabled]="loginForm.invalid" (click)="onLogin()">Login</button>
         </mat-card-footer>
       </form>
+      <div fxLayout="column" fxLayoutAlign="center center" class="register-field">
+        <span>Don't have an account? <a [routerLink]="['/registration']">Register here</a></span>
+      </div>
     </mat-card-content>
   </mat-card>
 </div>

@@ -18,6 +18,7 @@ import {
 import { FormsModule } from '@angular/forms';
 import { AuthenticationService } from './services/authentication.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -35,6 +36,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
     FlexLayoutModule,
     MatTabsModule,
     FormsModule,
+    RouterModule
   ],
   exports: [
     MatInputModule,
@@ -47,6 +49,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
     FlexLayoutModule,
     MatTabsModule,
     FormsModule,
+    RouterModule
   ],
   providers: [
     AuthenticationService,
