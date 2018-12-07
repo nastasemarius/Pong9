@@ -8,7 +8,8 @@ import {
   MatToolbarModule,
   MatButtonModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
+  MatTabsModule
 } from '@angular/material';
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatTabsModule
   ],
   exports: [
     MatInputModule,
@@ -32,7 +34,8 @@ import {
     MatToolbarModule,
     NavbarComponent,
     MatButtonModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatTabsModule
   ]
 })
 export class CoreModule { }
