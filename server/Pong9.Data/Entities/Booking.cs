@@ -26,11 +26,20 @@ namespace Pong9.Data.Entities
                 BookingId = Guid.NewGuid(),
                 StartTime = DateTime.UtcNow,
                 EndTime = DateTime.UtcNow,
-                TableId = Guid.NewGuid(),
                 Players = new HashSet<User>()
             };
 
             return instance;
+        }
+
+        public void UpdateBooking(DateTime startTime, DateTime endTime, User creator, Guid tableId,
+            ICollection<User> players)
+        {
+            StartTime = startTime;
+            EndTime = endTime;
+            Creator = creator;
+            TableId = tableId;
+            Players = players;
         }
     }
 }

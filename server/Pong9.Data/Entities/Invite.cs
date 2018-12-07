@@ -25,6 +25,13 @@ namespace Pong9.Data.Entities
 
             return instance;
         }
+
+        public void UpdateInvite(User source, User destination, Booking booking)
+        {
+            Source = source;
+            Destination = destination;
+            Booking = booking;
+        }
     }
 
 }
