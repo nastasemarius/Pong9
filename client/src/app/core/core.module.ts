@@ -13,6 +13,9 @@ import {
   MatInputModule,
   MatTabsModule
 } from '@angular/material';
+import { FormsModule } from '@angular/forms';
+import { AuthenticationService } from './services/authentication.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -28,7 +31,8 @@ import {
     MatFormFieldModule,
     MatInputModule,
     FlexLayoutModule,
-    MatTabsModule
+    MatTabsModule,
+    FormsModule,
   ],
   exports: [
     MatInputModule,
@@ -39,7 +43,12 @@ import {
     NavbarComponent,
     MatButtonModule,
     FlexLayoutModule,
-    MatTabsModule
+    MatTabsModule,
+    FormsModule,
+  ],
+  providers: [
+    AuthenticationService,
+    JwtHelperService
   ]
 })
 export class CoreModule { }
