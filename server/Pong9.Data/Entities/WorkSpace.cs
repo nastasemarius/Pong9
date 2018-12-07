@@ -18,24 +18,22 @@ namespace Pong9.Data.Entities
         
         public ICollection<User> Users { get; set; }
         
-        public static WorkSpace CreateWorkSpace(string name, string urlTag)
+        public static WorkSpace CreateWorkSpace()
         {
             var instance = new WorkSpace
             {
                 WorkSpaceId = Guid.NewGuid(),
                 Users = new HashSet<User>(),
-                Name = name,
-                UrlTag = urlTag
+                CreatedAt = DateTime.UtcNow
             };
 
             return instance;
         }
 
-        public void UpdateWorkSpace(string name, string urlTag, DateTime createdAt, ICollection<User> users)
+        public void UpdateWorkSpace(string name, string urlTag, ICollection<User> users)
         {
             Name = name;
             UrlTag = urlTag;
-            CreatedAt = createdAt;
             Users = users;
         }
     }
