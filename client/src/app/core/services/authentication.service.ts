@@ -12,7 +12,7 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private baseUrl: any = `${environment.restApiUrl}/Token`;
+  private baseUrl: any = `${environment.apiUrl}/Users/authenticate`;
   private tokenKey = 'pong9-token';
   private credentialsSubject: BehaviorSubject<any> = new BehaviorSubject({});
   public credentials: any;
@@ -21,6 +21,7 @@ export class AuthenticationService {
     private jwtHelper: JwtHelperService) { }
 
   login(credentials: Credentials): Observable<any> {
+    console.log(this.baseUrl)
     return this.httpService.post(this.baseUrl, { userName: credentials.userName, password: credentials.password }).pipe(tap(
       (res) => {
         localStorage.setItem(this.tokenKey, res.value);
@@ -32,7 +33,7 @@ export class AuthenticationService {
     return JSON.parse(localStorage.getItem(this.tokenKey));
   }
   register(user: User): Observable<any> {
-    return this.httpService.post(environment.restApiUrl, user);
+    return this.httpService.post(environment.apiUrl, user);
   }
   isUserAuthenticated(): boolean {
     const token = this.getToken();

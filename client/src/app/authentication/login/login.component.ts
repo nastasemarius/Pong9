@@ -18,9 +18,12 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
   onLogin(): void {
-    this.authService.login(this.loginCredentials).subscribe(() => {
+    console.log('suntem aici')
+    this.authService.login(this.loginCredentials).subscribe((res) => {
+      console.log(res);
       this.router.navigate(['/dashboard']);
-    }, () => {
+    }, (err) => {
+      console.log(err);
       this.isWrongPasword = true;
     });
   }
