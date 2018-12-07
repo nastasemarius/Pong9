@@ -10,6 +10,7 @@ using Pong9.Data.Entities;
 using Pong9.IRepositories;
 using Pong9.IServices;
 using Pong9.Api.Helpers;
+using Pong9.Data.DTO;
 
 namespace Pong9.Services
 {
@@ -51,6 +52,18 @@ namespace Pong9.Services
             user.Token = tokenHandler.WriteToken(token);
 
             return user;
+        }
+
+        public void Create(string username, string email, string password)
+        {
+            var userDto = new UserDTO()
+            {
+                Username = username,
+                Email = email,
+                Password = password
+            };
+
+            _userRepository.CreateUser(userDto);
         }
     }
 }

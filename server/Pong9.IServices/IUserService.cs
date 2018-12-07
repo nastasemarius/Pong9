@@ -8,5 +8,6 @@ namespace Pong9.IServices
     public interface IUserService
     {
         User Authenticate(string username, string password);
+        void Create(string username, string email, string password);
     }
 }

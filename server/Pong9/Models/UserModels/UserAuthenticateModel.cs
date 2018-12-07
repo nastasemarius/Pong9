@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Pong9.Api.Models
+namespace Pong9.Api.Models.UserModels
 {
-    public class UserModel
+    public class UserAuthenticateModel
     {
         public string Username { get; set; }
 
