@@ -6,6 +6,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { Credentials } from '../models/credentials';
 import { tap } from 'rxjs/operators';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,9 @@ export class AuthenticationService {
   }
   getToken(): any {
     return JSON.parse(localStorage.getItem(this.tokenKey));
+  }
+  register(user: User): Observable<any> {
+    return this.httpService.post(environment.restApiUrl, user);
   }
   private getTokenInfo(token): any {
     return this.jwtHelper.decodeToken(token);
