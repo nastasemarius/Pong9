@@ -10,11 +10,15 @@ namespace Pong9.Services.Helpers
 
         public bool IsSuccess { get; set; }
 
-        public ApiResult(T value, bool isSuccess)
+        public ApiResult(T value)
         {
             Value = value;
-            IsSuccess = isSuccess;
+            IsSuccess = true;
         }
 
+        public ApiResult(bool isSuccess)
+        {
+            IsSuccess = isSuccess;
+        }
     }
 }

@@ -5,17 +5,19 @@ VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pong9.Api", "Pong9\Pong9.Api.csproj", "{ABDFD20C-C427-4A82-B714-123DDB3F2583}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pong9.Data", "Pong9.Data\Pong9.Data.csproj", "{BD65C289-513A-451B-BDF5-20B3F38BA992}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pong9.Data", "Pong9.Data\Pong9.Data.csproj", "{BD65C289-513A-451B-BDF5-20B3F38BA992}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pong9.Persistence", "Pong9.Persistence\Pong9.Persistence.csproj", "{DD4EA014-18CC-4762-B7D3-FF46AF8828AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pong9.Persistence", "Pong9.Persistence\Pong9.Persistence.csproj", "{DD4EA014-18CC-4762-B7D3-FF46AF8828AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pong9.Repositories", "Pong9.Repositories\Pong9.Repositories.csproj", "{29CDD9F6-91E8-449E-8E36-133E824F2B4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pong9.Repositories", "Pong9.Repositories\Pong9.Repositories.csproj", "{29CDD9F6-91E8-449E-8E36-133E824F2B4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pong9.IRepositories", "Pong9.IRepositories\Pong9.IRepositories.csproj", "{E89AFF05-AA11-4FC9-9048-BEF7FBF359BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pong9.IRepositories", "Pong9.IRepositories\Pong9.IRepositories.csproj", "{E89AFF05-AA11-4FC9-9048-BEF7FBF359BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pong9.IServices", "Pong9.IServices\Pong9.IServices.csproj", "{958B6CA1-D898-49BF-BB6A-FEA7BCD7361F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pong9.IServices", "Pong9.IServices\Pong9.IServices.csproj", "{958B6CA1-D898-49BF-BB6A-FEA7BCD7361F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pong9.Services", "Pong9.Services\Pong9.Services.csproj", "{97E34C6B-7937-4016-9B54-8D80D7069DF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pong9.Services", "Pong9.Services\Pong9.Services.csproj", "{97E34C6B-7937-4016-9B54-8D80D7069DF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pong9.Helpers", "Helpers\Pong9.Helpers.csproj", "{72B27BE9-5822-46DD-8FFC-C0F6BD42F3ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{97E34C6B-7937-4016-9B54-8D80D7069DF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97E34C6B-7937-4016-9B54-8D80D7069DF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97E34C6B-7937-4016-9B54-8D80D7069DF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72B27BE9-5822-46DD-8FFC-C0F6BD42F3ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72B27BE9-5822-46DD-8FFC-C0F6BD42F3ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72B27BE9-5822-46DD-8FFC-C0F6BD42F3ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72B27BE9-5822-46DD-8FFC-C0F6BD42F3ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
