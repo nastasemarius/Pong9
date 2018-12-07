@@ -1,11 +1,18 @@
-
 <mat-toolbar>
   <mat-toolbar-row>
-    <button mat-button class="menu-hamburger" mat-button>
+    <button mat-icon-button class="menu-hamburger">
       <mat-icon>menu</mat-icon>
     </button>
     <div class="logo">
-        <img [src]="'/assets/images/logo.png'" alt="PONG9 LOGO"/>
-      </div>
+      <img [src]="'/assets/images/logo.png'" alt="PONG9 LOGO" />
+    </div>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>expand_more</mat-icon>
+    </button>
   </mat-toolbar-row>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>Item 1</button>
+    <button mat-menu-item>Item 2</button>
+  </mat-menu>
 </mat-toolbar>
