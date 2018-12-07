@@ -1,6 +1,7 @@
 ﻿using Pong9.Data.Entities;
 using System;
 using System.Collections.Generic;
+using Pong9.Data.DTO;
 
 namespace Pong9.IRepositories
 {
@@ -8,8 +9,8 @@ namespace Pong9.IRepositories
     {
         IEnumerable<Tournament> GetAllTournaments();
         Tournament GetTournamentById(Guid id);
-        void CreateTournament(Tournament tournament);
-        void EditTournament(Tournament tournament);
+        void CreateTournament(TournamentDTO tournament);
+        void EditTournament(Guid id, TournamentDTO tournament);
         void DeleteTournament(Tournament tournament);
     }
 }
