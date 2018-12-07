@@ -19,10 +19,9 @@ export class LoginComponent implements OnInit {
   }
   onLogin(): void {
     this.authService.login(this.loginCredentials).subscribe(() => {
-      this.router.navigate(['']);
+      this.router.navigate(['/dashboard']);
     }, () => {
       this.isWrongPasword = true;
-      console.log(this.isWrongPasword);
     });
   }
 
