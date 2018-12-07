@@ -6,11 +6,11 @@
       <input matInput placeholder="Username" formControlName="username" readonly>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Email" formControlName="email" readonly>
+      <input matInput placeholder="Email" formControlName="email">
     </mat-form-field>
     <mat-form-field>
       <input matInput placeholder="Workspace" formControlName="workspace" readonly>
-      <button matSuffix mat-icon-button matTooltip="Leave workspace">
+      <button matSuffix mat-icon-button matTooltip="Leave workspace" (click)="onLeaveWorkspace()">
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>

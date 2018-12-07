@@ -12,10 +12,13 @@ import {
   MatInputModule,
   MatTabsModule,
   MatMenuModule,
+  MatDialogModule,
 } from '@angular/material';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 @NgModule({
   declarations: [
-    NavbarComponent
+    NavbarComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +31,8 @@ import {
     FlexLayoutModule,
     MatTabsModule,
     MatMenuModule,
-    RouterModule
+    RouterModule,
+    MatDialogModule
   ],
   exports: [
     MatInputModule,
@@ -41,7 +45,9 @@ import {
     FlexLayoutModule,
     MatTabsModule,
     MatMenuModule,
-    RouterModule
+    RouterModule,
+    ConfirmDialogComponent,
+    MatDialogModule
   ]
 })
 export class CoreModule { }
