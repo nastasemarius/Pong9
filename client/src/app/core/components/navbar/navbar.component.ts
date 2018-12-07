@@ -12,4 +12,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
+  userLoggedIn(): boolean {
+    return false;
+  }
 }
