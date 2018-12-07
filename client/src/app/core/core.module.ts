@@ -9,7 +9,9 @@ import {
   MatButtonModule,
   MatFormFieldModule,
   MatInputModule,
-  MatTabsModule
+  MatTabsModule,
+  // MatTabLabel,
+  // MatTabBody
 } from '@angular/material';
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import {
     MatFormFieldModule,
     MatInputModule,
     FlexLayoutModule,
-    MatTabsModule
+    MatTabsModule,
+    // MatTabLabel,
+    // MatTabBody
   ],
   exports: [
     MatInputModule,
@@ -35,7 +39,9 @@ import {
     NavbarComponent,
     MatButtonModule,
     FlexLayoutModule,
-    MatTabsModule
+    MatTabsModule,
+    // MatTabLabel,
+    // MatTabBody
   ]
 })
 export class CoreModule { }

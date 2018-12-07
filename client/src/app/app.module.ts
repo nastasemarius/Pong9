@@ -7,6 +7,7 @@ import { UsersModule } from './users/users.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { AuthenticationModule } from './authentication/authentication.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { DashboardModule } from './dashboard/dashboard.module';
     BrowserAnimationsModule,
     AppRoutingModule,
     UsersModule,
-    DashboardModule
+    DashboardModule,
+    AuthenticationModule
   ],
   exports: [CoreModule],
   providers: [],
