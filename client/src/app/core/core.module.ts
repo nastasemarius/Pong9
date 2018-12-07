@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { RouterModule } from '@angular/router';
 import {
   MatCardModule,
   MatIconModule,
@@ -9,7 +10,8 @@ import {
   MatButtonModule,
   MatFormFieldModule,
   MatInputModule,
-  MatTabsModule
+  MatTabsModule,
+  MatMenuModule,
 } from '@angular/material';
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import {
     MatFormFieldModule,
     MatInputModule,
     FlexLayoutModule,
-    MatTabsModule
+    MatTabsModule,
+    MatMenuModule,
+    RouterModule
   ],
   exports: [
     MatInputModule,
@@ -35,7 +39,9 @@ import {
     NavbarComponent,
     MatButtonModule,
     FlexLayoutModule,
-    MatTabsModule
+    MatTabsModule,
+    MatMenuModule,
+    RouterModule
   ]
 })
 export class CoreModule { }
