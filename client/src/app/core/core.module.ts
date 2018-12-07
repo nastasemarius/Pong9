@@ -1,9 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { MatCardModule, MatIconModule, MatToolbarModule, MatButtonModule, MatInputModule, MatFormFieldModule, MatMenuModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+import {
+  MatCardModule,
+  MatIconModule,
+  MatToolbarModule,
+  MatButtonModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatTabsModule
+} from '@angular/material';
 @NgModule({
   declarations: [
     NavbarComponent
@@ -17,18 +24,18 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatFormFieldModule,
     MatInputModule,
     FlexLayoutModule,
-    MatMenuModule
+    MatTabsModule
   ],
   exports: [
-    MatFormFieldModule,
     MatInputModule,
+    MatFormFieldModule,
     MatCardModule,
     MatIconModule,
     MatToolbarModule,
     NavbarComponent,
     MatButtonModule,
     FlexLayoutModule,
-    MatMenuModule
+    MatTabsModule
   ]
 })
 export class CoreModule { }

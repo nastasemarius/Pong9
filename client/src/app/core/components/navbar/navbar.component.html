@@ -1,18 +1,17 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <button mat-icon-button class="menu-hamburger">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <div class="logo">
-      <img [src]="'/assets/images/logo.png'" alt="PONG9 LOGO" />
+    <div class="nav-bar" fxLayout="row" fxLayoutAlign="start center" fxFlexFill>
+      <div fxFlex="80" fxLayout="row" fxLayoutAlign="start center">
+        <div class="logo">
+          <img [src]="'/assets/images/logo.png'" alt="PONG9 LOGO"/>
+        </div>
+      </div>
+      <div *ngIf="userLoggedIn()" class="profile-options" fxLayout="row" fxLayoutAlign="end" fxFlex="20">
+        <span class="profile-name" fxLayout="row" fxLayoutAlign="end center">Username</span>
+        <button class="button-exit" mat-button >
+            <mat-icon>exit_to_app</mat-icon>
+        </button>
+      </div>
     </div>
-    <button mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon>expand_more</mat-icon>
-    </button>
   </mat-toolbar-row>
-
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item>Item 1</button>
-    <button mat-menu-item>Item 2</button>
-  </mat-menu>
 </mat-toolbar>
