@@ -37,9 +37,9 @@ namespace Pong9.Repositories
         }
 
         
-        public void EditWorkSpace(WorkSpaceDTO workSpaceDto)
+        public void EditWorkSpace(Guid id, WorkSpaceDTO workSpaceDto)
         {
-            var workSpaceEdit = WorkSpace.CreateWorkSpace();
+            var workSpaceEdit = _applicationDbContext.WorkSpaces.Find(id);
             workSpaceEdit.UpdateWorkSpace(workSpaceDto.Name, workSpaceDto.UrlTag, workSpaceDto.Users);
 
             _applicationDbContext.SaveChanges();

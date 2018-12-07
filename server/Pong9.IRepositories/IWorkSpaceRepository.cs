@@ -10,7 +10,7 @@ namespace Pong9.IRepositories
         IEnumerable<WorkSpace> GetAllWorkSpaces();
         WorkSpace GetWorkSpaceById(Guid id);
         void CreateWorkSpace(WorkSpaceDTO workSpace);
-        void EditWorkSpace(WorkSpaceDTO workSpace);
+        void EditWorkSpace(Guid id, WorkSpaceDTO workSpace);
         void DeleteWorkSpace(WorkSpace workSpace);
     }
 }

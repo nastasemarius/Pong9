@@ -13,7 +13,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Pong9.Data\Pong9.Data.csproj" />
+    <ProjectReference Include="..\Pong9.IRepositories\Pong9.IRepositories.csproj" />
     <ProjectReference Include="..\Pong9.Persistence\Pong9.Persistence.csproj" />
+    <ProjectReference Include="..\Pong9.Repositories\Pong9.Repositories.csproj" />
   </ItemGroup>
 
 </Project>

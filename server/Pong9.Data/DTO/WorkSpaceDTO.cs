@@ -10,8 +10,6 @@ namespace Pong9.Data.DTO
 
         public string UrlTag { get; set; }
 
-        public DateTime CreatedAt { get; set; }
-
         public ICollection<User> Users { get; set; }
     }
 }
