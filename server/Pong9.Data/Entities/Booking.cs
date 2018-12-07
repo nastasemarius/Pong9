@@ -19,7 +19,7 @@ namespace Pong9.Data.Entities
 
         public ICollection<User> Players { get; set; }
 
-        public Booking CreateBooking()
+        public static Booking CreateBooking()
         {
             var instance = new Booking
             {
