@@ -18,7 +18,6 @@ import { AuthenticationModule } from './authentication/authentication.module';
     BrowserAnimationsModule,
     AppRoutingModule,
     UsersModule,
-    MatCardModule,
     AuthenticationModule
   ],
   exports: [CoreModule],

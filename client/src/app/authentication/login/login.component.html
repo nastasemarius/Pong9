@@ -1,3 +1,19 @@
-<p>
-  login works!
-</p>
+<div fxLayout="column" fxLayoutAlign="center center" class="login-container">
+  <mat-card>
+    <mat-card-header fxLayout="column" fxLayoutAlign="center center">
+      <img class="logo" [src]="'../../assets/images/logo.png'">
+    </mat-card-header>
+    <mat-card-content>
+      <div class="welcome-text">
+        Welcome to Pong9!
+      </div>
+      <form #loginForm="ngForm" fxLayout="column">
+        <mat-form-field>
+          <input matInput autofocus type="text" name="userName" placeholder="Username" [(ngModel)]="loginCredentials.userName"
+            required />
+          <mat-error>Username is <strong>required</strong>.</mat-error>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

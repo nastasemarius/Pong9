@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { MatCardModule } from '@angular/material';
+import { CoreModule } from '../core/core.module';
 @NgModule({
   declarations: [UserProfileComponent],
   imports: [
     CommonModule,
-    MatCardModule
+    CoreModule
   ]
 })
 export class UsersModule { }

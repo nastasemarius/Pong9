@@ -9,7 +9,7 @@ import { Credentials } from 'src/app/core/models/credentials';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  private loginCredentials: Credentials;
+  private loginCredentials: Credentials = new Credentials();
   public isWrongPasword: boolean;
   constructor(private authService: AuthenticationService,
     private router: Router) { }

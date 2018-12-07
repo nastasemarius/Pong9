@@ -1,0 +1,15 @@
+.login-container {
+    width: 600px;
+    margin: auto;
+    border: 1px solid #FA7268;
+    border-radius: 10px;
+    .logo {
+        margin: 25px auto 25px;
+        display: block;
+    }
+    .welcome-text {
+        margin: 25px auto auto 25px;
+        text-align: center;
+        font-size: 1em;
+    }
+}
