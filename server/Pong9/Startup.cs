@@ -76,6 +76,8 @@ namespace Pong9
             services.AddScoped(typeof(IUserService), typeof(UserService));
             services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
 
+            services.AddScoped<IWorkSpaceRepository, WorkSpaceRepository>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddSwaggerGen(c =>
