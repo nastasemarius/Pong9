@@ -29,5 +29,13 @@ namespace Pong9.Data.Entities
 
             return instance;
         }
+
+        public void UpdatePingPongTable(string name, DateTime startingHour, DateTime endingHour, ICollection<Booking> bookings)
+        {
+            Name = name;
+            StartingHour = startingHour;
+            EndingHour = endingHour;
+            Bookings = bookings;
+        }
     }
 }

@@ -6,8 +6,7 @@ namespace Pong9.Data.Entities
 {
     public class Tournament
     {
-        [Key]
-        public Guid TournamentId { get; set; }
+        [Key] public Guid TournamentId { get; set; }
 
         public DateTime CreatedAt { get; set; }
 
@@ -26,6 +25,13 @@ namespace Pong9.Data.Entities
             };
 
             return instance;
+        }
+
+        public void UpdateTournament(ICollection<Match> matches, DateTime createdAt, string name)
+        {
+            CreatedAt = createdAt;
+            Name = name;
+            Matches = matches;
         }
     }
 }
