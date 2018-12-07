@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms'
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { ConfirmDialogComponent } from '../../core/components/confirm-dialog/confirm-dialog.component';
 @Component({
@@ -17,10 +17,10 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit() {
     const userData = {
-      username: 'vasilik',
-      email: 'vasilik@gmail.com',
+      username: 'johndoe',
+      email: 'johndoe@gmail.com',
       workspace: 'LEVI9'
-    }
+    };
     this.initializeUser(userData);
   }
 
@@ -41,7 +41,15 @@ export class UserProfileComponent implements OnInit {
       } else {
         console.log('Gave up on delete');
       }
-    })
+    });
+  }
+
+  saveProfile() {
+    console.log(this.user.value);
+  }
+
+  resetProfile() {
+
   }
 
 }

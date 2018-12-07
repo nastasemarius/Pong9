@@ -1,6 +1,7 @@
 
-<mat-card>
-  <mat-card-title>Edit user profile</mat-card-title>
+
+<div class="edit-user-profile" fxFlex="40" fxLayout="column" fxLayoutAlign="center">
+  <h2>Edit user profile</h2>
   <form [formGroup]="user" *ngIf="user">
     <mat-form-field>
       <input matInput placeholder="Username" formControlName="username" readonly>
@@ -14,6 +15,10 @@
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="saveProfile()">Save</button>
+    <button mat-raised-button color="warn" (click)="resetProfile()">Reset</button>
+
   </form>
-</mat-card>
+</div>
 

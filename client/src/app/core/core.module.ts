@@ -13,8 +13,8 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatTabsModule,
-  MatMenuModule
-  MatDialogModule,
+  MatMenuModule,
+  MatDialogModule
 } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
@@ -23,7 +23,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 @NgModule({
   declarations: [
     NavbarComponent,
-    FormvalidatorDirective
+    FormvalidatorDirective,
     ConfirmDialogComponent
   ],
   imports: [
@@ -58,7 +58,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
     ],
   providers: [
     ConfirmDialogComponent,
-    MatDialogModule
+    MatDialogModule,
     AuthenticationService,
     JwtHelperService
   ]
