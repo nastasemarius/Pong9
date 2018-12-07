@@ -34,6 +34,20 @@ export class AuthenticationService {
   register(user: User): Observable<any> {
     return this.httpService.post(environment.restApiUrl, user);
   }
+  isUserAuthenticated(): boolean {
+    const token = this.getToken();
+    if (token && !this.isTokenExpired()) {
+      return true;
+    }
+    return false;
+  }
+  isTokenExpired(): boolean {
+    const token = this.getToken();
+    if (token) {
+      return this.jwtHelper.isTokenExpired(token);
+    }
+    return true;
+  }
   private getTokenInfo(token): any {
     return this.jwtHelper.decodeToken(token);
   }
