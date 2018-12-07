@@ -9,6 +9,7 @@ import { CoreModule } from './core/core.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { JwtModule } from '@auth0/angular-jwt';
+import { AuthenticationModule } from './authentication/authentication.module';
 
 @NgModule({
   declarations: [
@@ -21,8 +22,8 @@ import { JwtModule } from '@auth0/angular-jwt';
     BrowserAnimationsModule,
     AppRoutingModule,
     UsersModule,
-    AuthenticationModule,
     DashboardModule,
+    AuthenticationModule
   ],
   exports: [CoreModule],
   providers: [],

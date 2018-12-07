@@ -1,13 +1,30 @@
-<app-navbar></app-navbar>
-<div class="container">
-    <div id="content">
-      <div id="main-content">
+<div class="dashboard-container">
+    <div class="content">
+      <div class="main-content">
         <mat-tab-group>
-          <mat-tab label="One">
-            Tab One Content
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <mat-icon>account_circle</mat-icon>
+            </ng-template>
+            <div>
+              Users availability
+            </div>
           </mat-tab>
-          <mat-tab label="Two">
-            Tab Two Content
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <mat-icon>notifications</mat-icon>
+            </ng-template>
+            <div>
+              Notifications
+            </div>
+          </mat-tab>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <mat-icon>dashboard</mat-icon>
+            </ng-template>
+            <div>
+              Book a table
+            </div>
           </mat-tab>
         </mat-tab-group>
       </div>

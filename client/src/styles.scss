@@ -3,5 +3,12 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.dashboard-container .mat-tab-label {
+  min-width: 50px;
+  padding: 0;
+}
+
+.dashboard-container .mat-tab-body-content {
+  padding: 20px;
+  box-sizing: border-box;
+}
