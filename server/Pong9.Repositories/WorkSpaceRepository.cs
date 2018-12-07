@@ -2,35 +2,54 @@
 using Pong9.IRepositories;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using Pong9.Data.DTO;
+using Pong9.Persistence;
 
 namespace Pong9.Repositories
 {
     public class WorkSpaceRepository : IWorkSpaceRepository
     {
-        public void CreateWorkSpace(WorkSpace workSpace)
-        {
-            throw new NotImplementedException();
-        }
+        private readonly ApplicationDbContext _applicationDbContext;
 
-        public void DeleteWorkSpace(WorkSpace workSpace)
+        public WorkSpaceRepository(ApplicationDbContext applicationDbContext)
         {
-            throw new NotImplementedException();
-        }
-
-        public void EditWorkSpace(WorkSpace workSpace)
-        {
-            throw new NotImplementedException();
+            _applicationDbContext = applicationDbContext;
         }
 
         public IEnumerable<WorkSpace> GetAllWorkSpaces()
         {
-            throw new NotImplementedException();
+            return _applicationDbContext.WorkSpaces.ToList();
         }
 
         public WorkSpace GetWorkSpaceById(Guid id)
         {
-            throw new NotImplementedException();
+            return _applicationDbContext.WorkSpaces.SingleOrDefault(workSpace => workSpace.WorkSpaceId == id);
         }
+
+        public void CreateWorkSpace(WorkSpaceDTO workSpaceDto)
+        {
+            var workSpace = WorkSpace.CreateWorkSpace();
+            workSpace.UpdateWorkSpace(workSpaceDto.Name, workSpaceDto.UrlTag, workSpaceDto.Users);
+
+            _applicationDbContext.WorkSpaces.Add(workSpace);
+            _applicationDbContext.SaveChanges();
+        }
+
+        
+        public void EditWorkSpace(WorkSpaceDTO workSpaceDto)
+        {
+            var workSpaceEdit = WorkSpace.CreateWorkSpace();
+            workSpaceEdit.UpdateWorkSpace(workSpaceDto.Name, workSpaceDto.UrlTag, workSpaceDto.Users);
+
+            _applicationDbContext.SaveChanges();
+        }
+
+        public void DeleteWorkSpace(WorkSpace workSpace)
+        {
+            _applicationDbContext.WorkSpaces.Remove(workSpace);
+            _applicationDbContext.SaveChanges();
+        }
+
     }
 }
