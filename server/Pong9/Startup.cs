@@ -13,6 +13,7 @@ using Pong9.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
+using Pong9.Persistence;
 
 namespace Pong9
 {
