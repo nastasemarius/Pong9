@@ -30,8 +30,7 @@ namespace Pong9.Repositories
 
         public void CreateUser(UserDTO userDto)
         {
-            var user = new User();
-            user.UpdateUser(userDto.FirstName, userDto.LastName, userDto.Status, userDto.WorkSpaceId, userDto.Roles);
+            var user = User.CreateUser(userDto.Username, userDto.Password, userDto.Email);
 
             _applicationDbContext.Users.Add(user);
             _applicationDbContext.SaveChanges();

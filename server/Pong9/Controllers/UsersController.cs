@@ -1,21 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-using Pong9.Api.Helpers;
-using Pong9.Api.Models;
-using Pong9.Data.Entities;
+using Pong9.Api.Models.UserModels;
 using Pong9.IServices;
 
 namespace Pong9.Api.Controllers
 {
     [Authorize]
     [ApiController]
-    [Route("[controller]")]
+    [Route("user/[action]")]
     public class UsersController : ControllerBase
     {
         private readonly IUserService _userService;
@@ -26,8 +18,8 @@ namespace Pong9.Api.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost("authenticate")]
-        public IActionResult Authenticate([FromBody]UserModel userParam)
+        [HttpPost]
+        public IActionResult Authenticate([FromBody]UserAuthenticateModel userParam)
         {
             var user = _userService.Authenticate(userParam.Username, userParam.Password);
 
@@ -35,6 +27,15 @@ namespace Pong9.Api.Controllers
                 return BadRequest(new { message = "Username or password is incorrect" });
 
             return Ok(user);
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public IActionResult Register([FromBody]UserRegisterModel userModel)
+        {
+            _userService.Create(userModel.Username, userModel.Email, userModel.Password);
+            
+            return Ok();
         }
     }
 }

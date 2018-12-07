@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Pong9.Data.Entities;
+﻿using Pong9.Data.Entities;
 using Pong9.Data.Enums;
 
 namespace Pong9.Data.DTO
