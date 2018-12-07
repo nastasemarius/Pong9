@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { UsersModule } from './users/users.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
-import { MatCardModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -15,12 +14,11 @@ import { MatCardModule } from '@angular/material';
   imports: [
     CoreModule,
     BrowserModule,
-    BrowserAnimationsModule,  
+    BrowserAnimationsModule,
     AppRoutingModule,
     UsersModule,
-    MatCardModule
   ],
-  exports: [MatCardModule],
+  exports: [CoreModule],
   providers: [],
   bootstrap: [AppComponent]
 })
