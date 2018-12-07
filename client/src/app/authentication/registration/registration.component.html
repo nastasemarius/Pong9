@@ -1,3 +1,39 @@
-<p>
-  registration works!
-</p>
+<div fxLayout="column" fxLayoutAlign="center center" class="registration-container">
+    <mat-card>
+      <mat-card-header fxLayout="column" fxLayoutAlign="center center">
+        <img class="logo" [src]="'../../assets/images/logo.png'">
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngIf="!checkPasswordsMatch()" class="alert">
+          Passwords do not match!
+        </div>
+        <div class="welcome-text">
+          Welcome to Pong9!
+        </div>
+        <form #registrationForm="ngForm" fxLayout="column" fxLayoutAlign="center center">
+          <mat-form-field>
+            <input matInput autofocus type="text" name="userName" placeholder="Username" [(ngModel)]="newUser.username"
+              required />
+            <mat-error>Username is <strong>required</strong>.</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+              <input matInput autofocus type="text" name="mail" placeholder="E-mail" [(ngModel)]="newUser.email"
+              pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required />
+              <mat-error>E-mail is not valid.</mat-error>
+            </mat-form-field>
+          <mat-form-field>
+            <input matInput type="password" name="password" placeholder="Password" [(ngModel)]="newUser.password" required />
+            <mat-error>Password is <strong>required</strong>.</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+              <input matInput type="password" name="password2" placeholder="Confirm password" [(ngModel)]="passwordConfirmationField"
+               (ngModelChange)="checkPasswordsMatch()" required />
+              <mat-error>Please confirm password.</mat-error>
+            </mat-form-field>
+          <mat-card-footer>
+            <button mat-raised-button type="submit" [disabled]="registrationForm.invalid || !checkPasswordsMatch()">Register</button>
+          </mat-card-footer>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
