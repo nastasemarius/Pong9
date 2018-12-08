@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Pong9.Api.Models.UserModels;
 using Pong9.Data.DTO;
@@ -10,6 +11,7 @@ namespace Pong9.Api.Controllers
     [Authorize]
     [ApiController]
     [Route("user/[action]")]
+    [EnableCors("MyPolicy")]
     public class UsersController : ControllerBase
     {
         private readonly IUserService _userService;
