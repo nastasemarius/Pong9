@@ -27,10 +27,17 @@ namespace Pong9.Repositories
             return _applicationDbContext.Bookings.SingleOrDefault(b => b.BookingId == id);
         }
 
+        public Booking GetBookingByStartTimeAndCreator(DateTime startTime, User creator)
+        {
+            return _applicationDbContext.Bookings.SingleOrDefault(b =>
+                b.StartTime == startTime && b.Creator.UserId == creator.UserId);
+        }
+
         public void CreateBooking(BookingDTO bookingDto)
         {
             var booking = Booking.CreateBooking();
-            booking.UpdateBooking(bookingDto.StartTime, bookingDto.EndTime, bookingDto.Creator, bookingDto.TableId, bookingDto.Players);
+            var creator = _applicationDbContext.Users.Find(bookingDto.CreatorId);
+            booking.UpdateBooking(bookingDto.StartTime, bookingDto.EndTime, creator, bookingDto.TableId, bookingDto.Players);
 
             _applicationDbContext.Bookings.Add(booking);
             _applicationDbContext.SaveChanges();
@@ -39,7 +46,8 @@ namespace Pong9.Repositories
         public void EditBooking(Guid id, BookingDTO bookingDto)
         {
             var bookingToEdit = _applicationDbContext.Bookings.Find(id);
-            bookingToEdit.UpdateBooking(bookingDto.StartTime, bookingDto.EndTime, bookingDto.Creator, bookingDto.TableId, bookingDto.Players);
+            var creator = _applicationDbContext.Users.Find(bookingDto.CreatorId);
+            bookingToEdit.UpdateBooking(bookingDto.StartTime, bookingDto.EndTime, creator, bookingDto.TableId, bookingDto.Players);
 
             _applicationDbContext.Bookings.Update(bookingToEdit);
             _applicationDbContext.SaveChanges();

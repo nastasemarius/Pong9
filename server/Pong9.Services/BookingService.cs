@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Pong9.Data.DTO;
 using Pong9.Data.Entities;
 using Pong9.IRepositories;
 using Pong9.IServices;
@@ -13,11 +14,13 @@ namespace Pong9.Services
     {
         private readonly IBookingRepository _bookingRepository;
         private readonly IPingPongTableRepository _pingPongTableRepository;
+        private readonly IUserRepository _userRepository;
 
-        public BookingService(IBookingRepository bookingRepository, IPingPongTableRepository pingPongTableRepository)
+        public BookingService(IBookingRepository bookingRepository, IPingPongTableRepository pingPongTableRepository, IUserRepository userRepository)
         {
             _bookingRepository = bookingRepository;
             _pingPongTableRepository = pingPongTableRepository;
+            _userRepository = userRepository;
         }
 
         public ApiResult<List<Booking>> GetBookingsFromCurrentDay(Guid tableId)
@@ -57,6 +60,23 @@ namespace Pong9.Services
             }
 
             return new ApiResult<List<User>>(users);
+        }
+
+        public ApiResult<Booking> CreateBooking(BookingDTO bookingDto)
+        {
+
+            _bookingRepository.CreateBooking(bookingDto);
+
+            var creator = _userRepository.GetUserById(bookingDto.CreatorId);
+
+            if (creator == null)
+            {
+                return new ApiResult<Booking>(false);
+            }
+
+            var booking = _bookingRepository.GetBookingByStartTimeAndCreator(bookingDto.StartTime, creator);
+
+            return new ApiResult<Booking>(booking);
         }
     }
 }
