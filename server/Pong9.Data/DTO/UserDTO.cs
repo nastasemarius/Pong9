@@ -18,7 +18,7 @@ namespace Pong9.Data.DTO
 
         public StatusType? Status { get; set; }
 
-        public string WorkSpaceId { get; set; }
+        public Guid WorkSpaceId { get; set; }
 
         public UserRole? Roles { get; set; }
 
