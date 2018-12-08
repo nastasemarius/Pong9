@@ -11,5 +11,7 @@ namespace Pong9.IServices
         void Create(string username, string email, string password);
         bool UpdateProfile(Guid userId, UserDTO userDto);
         User GetUserByUsername(string username);
+        bool UpdateStatus(Guid userId, int status);
+        bool DeleteUser(Guid userId);
     }
 }

@@ -14,6 +14,5 @@ namespace Pong9.Api.Models.UserModels
         [EmailAddress]
         public string Email { get; set; }
 
-        public StatusType Status { get; set; }
     }
 }

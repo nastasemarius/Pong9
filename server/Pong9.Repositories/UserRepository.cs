@@ -74,9 +74,12 @@ namespace Pong9.Repositories
                 user.Email = userDto.Email;
             }
 
-            if (userDto.Status != user.Status)
+            if (userDto.Status.HasValue)
             {
-                user.Status = userDto.Status;
+                if (userDto.Status.Value != user.Status)
+                {
+                    user.Status = userDto.Status.Value;
+                }
             }
 
             if (Guid.TryParse(userDto.WorkSpaceId, out workSpaceId))
@@ -87,9 +90,12 @@ namespace Pong9.Repositories
                 }
             }
 
-            if (userDto.Roles != user.Roles)
+            if (userDto.Roles.HasValue)
             {
-                user.Roles = userDto.Roles;
+                if (userDto.Roles.Value != user.Roles)
+                {
+                    user.Roles = userDto.Roles.Value;
+                }
             }
 
             return user;
