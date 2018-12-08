@@ -24,12 +24,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { AuthenticationService } from './services/authentication.service';
 import { WorkspaceComponent } from './components/workspace/workspace.component';
+import { TableScheduleComponent } from './components/table-schedule/table-schedule.component';
 @NgModule({
   declarations: [
     NavbarComponent,
     FormvalidatorDirective,
     ConfirmDialogComponent,
-    WorkspaceComponent
+    WorkspaceComponent,
+    TableScheduleComponent
   ],
   imports: [
     MatBadgeModule,
@@ -70,7 +72,8 @@ import { WorkspaceComponent } from './components/workspace/workspace.component';
     WorkspaceComponent,
     MatRadioModule,
     MatTooltipModule,
-    MatListModule
+    MatListModule,
+    TableScheduleComponent
   ],
   providers: [
     ConfirmDialogComponent,
