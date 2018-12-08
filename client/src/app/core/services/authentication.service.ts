@@ -6,12 +6,14 @@ import { Router } from '@angular/router';
 import { Credentials } from '../models/credentials';
 import { tap } from 'rxjs/operators';
 import { User } from '../models/user';
+import * as jwtDecode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private baseUrl: any = `${environment.apiUrl}/Users/authenticate`;
+  private loginUrl: any = `${environment.apiUrl}/user/authenticate`;
+  private registerUrl: any = `${environment.apiUrl}/user/register`;
   private tokenKey = 'pong9-token';
   private credentialsSubject: BehaviorSubject<any> = new BehaviorSubject({});
   public credentials: any;
@@ -19,8 +21,9 @@ export class AuthenticationService {
     private router: Router) { }
 
   login(credentials: Credentials): Observable<any> {
-    return this.httpService.post(this.baseUrl, { userName: credentials.userName, password: credentials.password }).pipe(tap(
+    return this.httpService.post(this.loginUrl, { userName: credentials.userName, password: credentials.password }).pipe(tap(
       (res) => {
+        console.log(res);
         localStorage.setItem(this.tokenKey, res.value);
         this.credentialsSubject.next(this.getTokenInfo(res.value));
       }
@@ -30,7 +33,7 @@ export class AuthenticationService {
     return JSON.parse(localStorage.getItem(this.tokenKey));
   }
   register(user: User): Observable<any> {
-    return this.httpService.post(`${environment.apiUrl}/user/register`, user);
+    return this.httpService.post(this.registerUrl, user);
   }
   isUserAuthenticated(): boolean {
     const token = this.getToken();
@@ -41,8 +44,9 @@ export class AuthenticationService {
   }
   isTokenExpired(): boolean {
     const token = this.getToken();
+    const current_time = new Date().getTime() / 1000;
     if (token) {
-      // return this.jwtHelper.isTokenExpired(token);
+      return current_time < this.getTokenInfo(token).exp;
     }
     return true;
   }
@@ -51,6 +55,6 @@ export class AuthenticationService {
     this.router.navigate(['/login']);
   }
   private getTokenInfo(token): any {
-    // return this.jwtHelper.decodeToken(token);
+    return jwtDecode(token);
   }
 }

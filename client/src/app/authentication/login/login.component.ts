@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
       console.log(res);
       this.router.navigate(['/dashboard']);
     }, (err) => {
+      console.log(err);
       this.errorMessage = 'Username or password invalid!';
       this.isWrongPasword = true;
     });
