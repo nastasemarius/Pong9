@@ -10,5 +10,6 @@ namespace Pong9.IServices
         User Authenticate(string username, string password);
         void Create(string username, string email, string password);
         bool UpdateProfile(Guid userId, UserDTO userDto);
+        User GetUserByUsername(string username);
     }
 }

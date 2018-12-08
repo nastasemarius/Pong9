@@ -24,7 +24,7 @@ namespace Pong9.Repositories
 
         public User GetUserByUsername(string username)
         {
-
+            return _applicationDbContext.Users.SingleOrDefault(user => user.Username == username);
         }
 
         public User GetUserById(Guid id)

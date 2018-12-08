@@ -83,5 +83,10 @@ namespace Pong9.Services
 
             return true;
         }
+
+        public User GetUserByUsername(string username)
+        {
+            return _userRepository.GetUserByUsername(username);
+        }
     }
 }
