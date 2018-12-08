@@ -17,7 +17,6 @@ import {
 } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { AuthenticationService } from './services/authentication.service';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
@@ -52,8 +51,7 @@ import { RouterModule } from '@angular/router';
     RouterModule
   ],
   providers: [
-    AuthenticationService,
-    JwtHelperService
+    AuthenticationService
   ]
 })
 export class CoreModule { }

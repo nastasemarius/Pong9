@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { Credentials } from '../models/credentials';
 import { tap } from 'rxjs/operators';
@@ -17,8 +16,7 @@ export class AuthenticationService {
   private credentialsSubject: BehaviorSubject<any> = new BehaviorSubject({});
   public credentials: any;
   constructor(private httpService: HttpClient,
-    private router: Router,
-    private jwtHelper: JwtHelperService) { }
+    private router: Router) { }
 
   login(credentials: Credentials): Observable<any> {
     return this.httpService.post(this.baseUrl, { userName: credentials.userName, password: credentials.password }).pipe(tap(
@@ -32,7 +30,7 @@ export class AuthenticationService {
     return JSON.parse(localStorage.getItem(this.tokenKey));
   }
   register(user: User): Observable<any> {
-    return this.httpService.post(`${environment.apiUrl}/Users/register`, user);
+    return this.httpService.post(`${environment.apiUrl}/user/register`, user);
   }
   isUserAuthenticated(): boolean {
     const token = this.getToken();
@@ -44,7 +42,7 @@ export class AuthenticationService {
   isTokenExpired(): boolean {
     const token = this.getToken();
     if (token) {
-      return this.jwtHelper.isTokenExpired(token);
+      // return this.jwtHelper.isTokenExpired(token);
     }
     return true;
   }
@@ -53,6 +51,6 @@ export class AuthenticationService {
     this.router.navigate(['/login']);
   }
   private getTokenInfo(token): any {
-    return this.jwtHelper.decodeToken(token);
+    // return this.jwtHelper.decodeToken(token);
   }
 }
