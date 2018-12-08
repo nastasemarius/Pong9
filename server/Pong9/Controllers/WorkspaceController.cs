@@ -9,8 +9,8 @@ using Pong9.IServices;
 
 namespace Pong9.Api.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class WorkspaceController : Controller
     {
         /*private readonly IWorkSpaceRepository _workSpaceRepository;

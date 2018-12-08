@@ -12,6 +12,7 @@ using Pong9.IServices;
 using Pong9.Api.Helpers;
 using Pong9.Data.DTO;
 using Pong9.Helpers;
+using Pong9.Services.Helpers;
 
 namespace Pong9.Services
 {
@@ -67,6 +68,20 @@ namespace Pong9.Services
             };
 
             _userRepository.CreateUser(userDto);
+        }
+
+        public bool UpdateProfile(Guid userId, UserDTO userDto)
+        {
+            var user = _userRepository.GetUserById(userId);
+
+            if (user == null)
+            {
+                return false;
+            }
+
+            _userRepository.EditUser(userId, userDto);
+
+            return true;
         }
     }
 }

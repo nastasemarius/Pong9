@@ -1,10 +1,12 @@
 ﻿using Pong9.Data.Enums;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Pong9.Data.Entities
 {
     public class User
     {
+        [Key]
         public Guid UserId { get; set; }
 
         public string FirstName { get; set; }
@@ -21,7 +23,7 @@ namespace Pong9.Data.Entities
 
         public StatusType? Status { get; set; }
 
-        public WorkSpace WorkSpaceId { get; set; }
+        public Guid? WorkSpaceId { get; set; }
 
         public UserRole? Roles { get; set; }
 
@@ -40,7 +42,7 @@ namespace Pong9.Data.Entities
             return instance;
         }
 
-        public void UpdateUser(string firstName, string lastName, StatusType status, WorkSpace workSpaceId,
+        public void UpdateUser(string firstName, string lastName, StatusType status, Guid workSpaceId,
             UserRole roles)
         {
             FirstName = firstName;

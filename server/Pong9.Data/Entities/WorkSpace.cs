@@ -17,6 +17,8 @@ namespace Pong9.Data.Entities
         public DateTime CreatedAt { get; set; }
         
         public ICollection<User> Users { get; set; }
+
+        public ICollection<PingPongTable> Tables { get; set; }
         
         public static WorkSpace CreateWorkSpace()
         {
@@ -24,16 +26,16 @@ namespace Pong9.Data.Entities
             {
                 WorkSpaceId = Guid.NewGuid(),
                 Users = new HashSet<User>(),
+                Tables = new HashSet<PingPongTable>(),
                 CreatedAt = DateTime.UtcNow
             };
 
             return instance;
         }
 
-        public void UpdateWorkSpace(string name, string urlTag, ICollection<User> users)
+        public void UpdateWorkSpace(string name, ICollection<User> users)
         {
             Name = name;
-            UrlTag = urlTag;
             Users = users;
         }
     }

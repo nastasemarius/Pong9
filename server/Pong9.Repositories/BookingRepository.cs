@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Pong9.Data.DTO;
 using Pong9.Data.Entities;
 using Pong9.IRepositories;
@@ -32,6 +31,7 @@ namespace Pong9.Repositories
         {
             var booking = Booking.CreateBooking();
             booking.UpdateBooking(bookingDto.StartTime, bookingDto.EndTime, bookingDto.Creator, bookingDto.TableId, bookingDto.Players);
+
             _applicationDbContext.Bookings.Add(booking);
             _applicationDbContext.SaveChanges();
         }
@@ -40,6 +40,8 @@ namespace Pong9.Repositories
         {
             var bookingToEdit = _applicationDbContext.Bookings.Find(id);
             bookingToEdit.UpdateBooking(bookingDto.StartTime, bookingDto.EndTime, bookingDto.Creator, bookingDto.TableId, bookingDto.Players);
+
+            _applicationDbContext.Bookings.Update(bookingToEdit);
             _applicationDbContext.SaveChanges();
         }
 

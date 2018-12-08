@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Pong9.Api.Models.UserModels;
+using Pong9.Data.DTO;
 using Pong9.IServices;
 
 namespace Pong9.Api.Controllers
@@ -35,6 +37,25 @@ namespace Pong9.Api.Controllers
         {
             _userService.Create(userModel.Username, userModel.Email, userModel.Password);
             
+            return Ok(userModel.Username);
+        }
+
+        [AllowAnonymous]
+        [HttpPut, ActionName("settings")]
+        public IActionResult UpdateProfile(Guid userId, [FromBody]UserRenameModel userModel)
+        {
+            var userDto = new UserDTO()
+            {
+                FirstName = userModel.FirstName,
+                LastName = userModel.LastName,
+                Status = userModel.Status
+            };
+
+            if (!_userService.UpdateProfile(userId, userDto))
+            {
+                return BadRequest();
+            }
+
             return Ok();
         }
     }
