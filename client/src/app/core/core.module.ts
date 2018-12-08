@@ -19,7 +19,7 @@ import {
 import { FormsModule } from '@angular/forms';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { AuthenticationService } from './services/authentication.service';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -58,9 +58,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
     ],
   providers: [
     ConfirmDialogComponent,
+    AuthenticationService
     MatDialogModule,
-    AuthenticationService,
-    JwtHelperService
   ]
 })
 export class CoreModule { }

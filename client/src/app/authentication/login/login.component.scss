@@ -5,7 +5,7 @@
     mat-card {
         margin: 25px auto 25px;
         width: 350px;
-        height: 65%;
+        height: 70%;
     }
     .logo {
         margin: 25px auto 25px;
@@ -23,5 +23,12 @@
         color: #f44336;
         margin-bottom: 15px;
         text-align: center;
+    }
+    .register-field{
+        margin: 35px auto;
+        width: 70%;
+        a {
+            color: #330099;
+        }
     }
 }
