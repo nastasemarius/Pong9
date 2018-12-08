@@ -27,7 +27,7 @@ namespace Pong9.Services
         {
             for (var index = 0; index < workSpaceDto.NumberOfTables; ++index)
             {
-                _pingPongTableRepository.CreatePingPongTable(new PingPongTableDTO());
+                _pingPongTableRepository.CreatePingPongTable(new PingPongTableDTO() { Name = "Table " + (index + 1)});
             }
 
             _workSpaceRepository.CreateWorkSpace(workSpaceDto);
