@@ -37,7 +37,7 @@ namespace Pong9.Api.Controllers
         {
             _userService.Create(userModel.Username, userModel.Email, userModel.Password);
             
-            return Ok(userModel.Username);
+            return Ok(_userService.GetUserByUsername(userModel.Username).UserId);
         }
 
         [AllowAnonymous]
@@ -58,5 +58,7 @@ namespace Pong9.Api.Controllers
 
             return Ok();
         }
+
+
     }
 }

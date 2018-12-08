@@ -8,6 +8,7 @@ namespace Pong9.IRepositories
     public interface IUserRepository
     {
         IEnumerable<User> GetAllUsers();
+        User GetUserByUsername(string username);
         User GetUserById(Guid id);
         void CreateUser(UserDTO user);
         void EditUser(Guid userId, UserDTO user);
