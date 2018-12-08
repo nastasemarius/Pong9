@@ -28,7 +28,7 @@ namespace Pong9.Api.Controllers
             if (user == null)
                 return BadRequest(new { message = "Username or password is incorrect" });
 
-            return Ok(user);
+            return Ok(user.Token);
         }
 
         [AllowAnonymous]
@@ -40,15 +40,25 @@ namespace Pong9.Api.Controllers
             return Ok(_userService.GetUserByUsername(userModel.Username).UserId);
         }
 
-        [AllowAnonymous]
-        [HttpPut, ActionName("settings")]
+        [HttpPatch, ActionName("changeStatus")]
+        public IActionResult UpdateStatus(Guid userId, int statusType)
+        {
+            if (!_userService.UpdateStatus(userId, statusType))
+            {
+                return BadRequest();
+            }
+
+            return Ok();
+        }
+
+        [HttpPut, ActionName("updateProfile")]
         public IActionResult UpdateProfile(Guid userId, [FromBody]UserRenameModel userModel)
         {
             var userDto = new UserDTO()
             {
                 FirstName = userModel.FirstName,
                 LastName = userModel.LastName,
-                Status = userModel.Status
+                Email = userModel.Email
             };
 
             if (!_userService.UpdateProfile(userId, userDto))
@@ -59,6 +69,15 @@ namespace Pong9.Api.Controllers
             return Ok();
         }
 
+        [HttpDelete, ActionName("delete")]
+        public IActionResult Delete(Guid userId)
+        {
+            if (!_userService.DeleteUser(userId))
+            {
+                return BadRequest();
+            }
 
+            return Ok();
+        }
     }
 }

@@ -21,11 +21,11 @@ namespace Pong9.Data.Entities
 
         public string Token { get; set; }
 
-        public StatusType? Status { get; set; }
+        public StatusType Status { get; set; }
 
         public Guid? WorkSpaceId { get; set; }
 
-        public UserRole? Roles { get; set; }
+        public UserRole Roles { get; set; }
 
         public DateTime CreatedAt { get; set; }
 
@@ -36,7 +36,9 @@ namespace Pong9.Data.Entities
                 UserId = Guid.NewGuid(),
                 Username = username,
                 Password = password,
-                Email = email
+                Email = email,
+                Roles = UserRole.Normal,
+                Status = StatusType.Offline
             };
 
             return instance;

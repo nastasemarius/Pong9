@@ -4,6 +4,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Pong9.Data.Entities;
@@ -11,6 +12,7 @@ using Pong9.IRepositories;
 using Pong9.IServices;
 using Pong9.Api.Helpers;
 using Pong9.Data.DTO;
+using Pong9.Data.Enums;
 using Pong9.Helpers;
 using Pong9.Services.Helpers;
 
@@ -87,6 +89,31 @@ namespace Pong9.Services
         public User GetUserByUsername(string username)
         {
             return _userRepository.GetUserByUsername(username);
+        }
+
+        public bool UpdateStatus(Guid userId, int status)
+        {
+            var user = _userRepository.GetUserById(userId);
+
+            if (user == null)
+            {
+                return false;
+            }
+
+            var userDto = new UserDTO()
+            {
+                Status = (StatusType)status
+            };
+
+            _userRepository.EditUser(userId, userDto);
+
+            return true;
+        }
+
+        [HttpDelete]
+        public bool DeleteUser(Guid userId)
+        {
+            throw new NotImplementedException();
         }
     }
 }
