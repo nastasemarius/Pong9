@@ -25,12 +25,14 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
 import { AuthenticationService } from './services/authentication.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { WorkspaceComponent } from './components/workspace/workspace.component';
+import { TableScheduleComponent } from './components/table-schedule/table-schedule.component';
 @NgModule({
   declarations: [
     NavbarComponent,
     FormvalidatorDirective,
     ConfirmDialogComponent,
-    WorkspaceComponent
+    WorkspaceComponent,
+    TableScheduleComponent
   ],
   imports: [
     MatBadgeModule,
@@ -71,7 +73,8 @@ import { WorkspaceComponent } from './components/workspace/workspace.component';
     WorkspaceComponent,
     MatRadioModule,
     MatTooltipModule,
-    MatListModule
+    MatListModule,
+    TableScheduleComponent
   ],
   providers: [
     ConfirmDialogComponent,

@@ -1,0 +1,11 @@
+<div>
+  <h2>Table {{tableInfo.number}}</h2>
+  <mat-selection-list #tableSelection>
+    <mat-list-option [disabled]="hours.disabled" *ngFor="let hours of availableHours ">
+      {{hours.intervalStart}} - {{hours.intervalEnd}}
+    </mat-list-option>
+  </mat-selection-list>
+  <br>
+  <button mat-raised-button [disabled]="unableToBook(tableSelection.selectedOptions.selected)" color="primary" (click)="bookTable(tableSelection.selectedOptions.selected)">Book
+    table</button>
+</div>

@@ -39,12 +39,12 @@
             <h2>Notifications</h2>
           </div>
         </mat-tab>
-        <mat-tab *ngFor="let table of workspace.tables">
+        <mat-tab *ngFor="let table of workspace.tables" key="table.number">
           <ng-template mat-tab-label>
             <mat-icon [matTooltip]="'Table ' + table.number" [matBadge]="table.number" matBadgeColor="primary">dashboard</mat-icon>
           </ng-template>
           <div>
-            <h2>Table {{table.number}}</h2>
+            <app-table-schedule [tableInfo]="table"></app-table-schedule>
           </div>
         </mat-tab>
       </mat-tab-group>
