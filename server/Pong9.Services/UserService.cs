@@ -56,6 +56,12 @@ namespace Pong9.Services
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
             user.Token = tokenHandler.WriteToken(token);
+            var userDto = new UserDTO()
+            {
+                Token = user.Token
+            };
+
+            _userRepository.EditUser(user.UserId, userDto);
 
             return user;
         }

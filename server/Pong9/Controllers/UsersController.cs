@@ -20,6 +20,7 @@ namespace Pong9.Api.Controllers
         }
 
         [AllowAnonymous]
+        [Produces("application/json")]
         [HttpPost, ActionName("authenticate")]
         public IActionResult Authenticate([FromBody]UserAuthenticateModel userParam)
         {
@@ -69,7 +70,7 @@ namespace Pong9.Api.Controllers
             return Ok();
         }
 
-        [HttpDelete, ActionName("delete")]
+        [HttpPost, ActionName("delete")]
         public IActionResult Delete(Guid userId)
         {
             if (!_userService.DeleteUser(userId))

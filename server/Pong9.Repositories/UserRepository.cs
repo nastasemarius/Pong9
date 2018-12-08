@@ -98,6 +98,11 @@ namespace Pong9.Repositories
                 }
             }
 
+            if (userDto.Token != null)
+            {
+                user.Token = userDto.Token;
+            }
+
             return user;
         }
     }
