@@ -21,7 +21,6 @@ export class AuthenticationService {
     private jwtHelper: JwtHelperService) { }
 
   login(credentials: Credentials): Observable<any> {
-    console.log(this.baseUrl)
     return this.httpService.post(this.baseUrl, { userName: credentials.userName, password: credentials.password }).pipe(tap(
       (res) => {
         localStorage.setItem(this.tokenKey, res.value);
@@ -33,7 +32,7 @@ export class AuthenticationService {
     return JSON.parse(localStorage.getItem(this.tokenKey));
   }
   register(user: User): Observable<any> {
-    return this.httpService.post(environment.apiUrl, user);
+    return this.httpService.post(`${environment.apiUrl}/Users/register`, user);
   }
   isUserAuthenticated(): boolean {
     const token = this.getToken();

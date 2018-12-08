@@ -12,6 +12,7 @@ import { ErrorStateMatcher } from '@angular/material';
 export class LoginComponent implements OnInit {
   private loginCredentials: Credentials = new Credentials();
   public isWrongPasword = false;
+  public errorMessage: string;
   constructor(private authService: AuthenticationService,
     private router: Router) { }
 
@@ -23,7 +24,7 @@ export class LoginComponent implements OnInit {
       console.log(res);
       this.router.navigate(['/dashboard']);
     }, (err) => {
-      console.log(err);
+      this.errorMessage = 'Username or password invalid!';
       this.isWrongPasword = true;
     });
   }
