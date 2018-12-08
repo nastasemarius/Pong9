@@ -27,8 +27,9 @@ export class WorkspaceComponent implements OnInit {
 
   }
   submitWorkspace() {
-    this.workspaceService.createWorkspace(this.newWorkspace).subscribe();
-    this.navigateToDashboard();
+    this.workspaceService.createWorkspace(this.newWorkspace).subscribe(() => {
+      this.navigateToDashboard();
+    });
   }
 
   navigateToDashboard() {
