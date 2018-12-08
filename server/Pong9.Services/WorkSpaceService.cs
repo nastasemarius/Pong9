@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Pong9.Data.DTO;
 using Pong9.Data.Entities;
 using Pong9.IRepositories;
 using Pong9.IServices;
@@ -17,7 +18,12 @@ namespace Pong9.Services
             _workSpaceRepository = workSpaceRepository;
         }
 
-        public ApiResult<WorkSpace> GetWorkspaceById(Guid id)
+        public void CreateWorkSpace(WorkSpaceDTO workSpaceDto)
+        {
+            _workSpaceRepository.CreateWorkSpace(workSpaceDto);
+        }
+
+        public ApiResult<WorkSpace> GetWorkSpaceById(Guid id)
         {
             var workspace = _workSpaceRepository.GetWorkSpaceById(id);
             if (workspace == null)
@@ -26,6 +32,32 @@ namespace Pong9.Services
             }
 
             return new ApiResult<WorkSpace>(workspace);
+        }
+
+        public bool DeleteWorkSpace(Guid id)
+        {
+            var workspace = _workSpaceRepository.GetWorkSpaceById(id);
+            if (workspace == null)
+            {
+                return false;
+            }
+
+            _workSpaceRepository.DeleteWorkSpace(workspace);
+
+            return true;
+        }
+
+        public bool UpdateWorkSpace(Guid id, WorkSpaceDTO workSpaceDto)
+        {
+            var workspace = _workSpaceRepository.GetWorkSpaceById(id);
+            if (workspace == null)
+            {
+                return false;
+            }
+
+            _workSpaceRepository.EditWorkSpace(id, workSpaceDto);
+
+            return true;
         }
     }
 }

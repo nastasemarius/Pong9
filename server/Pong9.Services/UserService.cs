@@ -11,26 +11,29 @@ using Pong9.IRepositories;
 using Pong9.IServices;
 using Pong9.Api.Helpers;
 using Pong9.Data.DTO;
+using Pong9.Helpers;
 
 namespace Pong9.Services
 {
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
-        private List<User> _users;
-
         private readonly AppSettings _appSettings;
+        private readonly HashingAlg _hashAlg;
+        private List<User> _users;
 
         public UserService(IOptions<AppSettings> appSettings, IUserRepository userRepository)
         {
             _appSettings = appSettings.Value;
             _userRepository = userRepository;
             _users = userRepository.GetAllUsers().ToList();
+            _hashAlg = new HashingAlg();
         }
 
         public User Authenticate(string username, string password)
         {
-            var user = _users.SingleOrDefault(x => x.Username == username && x.Password == password);
+            var hashedPassword = _hashAlg.HashPassword(password);
+            var user = _users.SingleOrDefault(x => x.Username == username && x.Password == hashedPassword);
 
             // return null if user not found
             if (user == null)
@@ -60,7 +63,7 @@ namespace Pong9.Services
             {
                 Username = username,
                 Email = email,
-                Password = password
+                Password = _hashAlg.HashPassword(password)
             };
 
             _userRepository.CreateUser(userDto);
