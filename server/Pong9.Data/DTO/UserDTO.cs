@@ -21,5 +21,7 @@ namespace Pong9.Data.DTO
         public string WorkSpaceId { get; set; }
 
         public UserRole? Roles { get; set; }
+
+        public string Token { get; set; }
     }
 }

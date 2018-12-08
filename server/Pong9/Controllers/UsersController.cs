@@ -70,7 +70,7 @@ namespace Pong9.Api.Controllers
             return Ok();
         }
 
-        [HttpDelete, ActionName("delete")]
+        [HttpPost, ActionName("delete")]
         public IActionResult Delete(Guid userId)
         {
             if (!_userService.DeleteUser(userId))

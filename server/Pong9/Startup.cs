@@ -75,10 +75,13 @@ namespace Pong9
 
             services.AddScoped(typeof(IUserService), typeof(UserService));
             services.AddScoped(typeof(IMatchService), typeof(MatchService));
+            services.AddScoped(typeof(IBookingService), typeof(BookingService));
 
             services.AddScoped(typeof(IMatchRepository), typeof(MatchRepository));
             services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
             services.AddScoped<IWorkSpaceRepository, WorkSpaceRepository>();
+            services.AddScoped(typeof(IBookingRepository), typeof(BookingRepository));
+            services.AddScoped(typeof(IPingPongTableRepository), typeof(PingPongTableRepository));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
