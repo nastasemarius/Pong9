@@ -74,8 +74,10 @@ namespace Pong9
                     Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped(typeof(IUserService), typeof(UserService));
-            services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
+            services.AddScoped(typeof(IMatchService), typeof(MatchService));
 
+            services.AddScoped(typeof(IMatchRepository), typeof(MatchRepository));
+            services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
             services.AddScoped<IWorkSpaceRepository, WorkSpaceRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
