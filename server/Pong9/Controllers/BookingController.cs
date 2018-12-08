@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Pong9.Data.DTO;
 using Pong9.Data.Entities;
 using Pong9.IRepositories;
 using Pong9.IServices;
@@ -47,6 +48,20 @@ namespace Pong9.Api.Controllers
             }
 
             return Ok(users.Value);
+        }
+
+        [HttpPost]
+        [HttpPost, ActionName("createBooking")]
+        public IActionResult CreateBooking([FromBody] BookingDTO bookingDto)
+        {
+            var createBookingResult = _bookingService.CreateBooking(bookingDto);
+
+            if (!createBookingResult.IsSuccess)
+            {
+                return BadRequest(new {message = "Failed to create booking."});
+            }
+
+            return Ok(createBookingResult.Value);
         }
     }
 }
