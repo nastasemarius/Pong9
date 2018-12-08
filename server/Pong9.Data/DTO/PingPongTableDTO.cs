@@ -12,6 +12,9 @@ namespace Pong9.Data.DTO
         public DateTime StartingHour { get; set; }
 
         public DateTime EndingHour { get; set; }
+
+        public Guid WorkingStateId { get; set; }
+
         public ICollection<Booking> Bookings { get; set; }
 
     }

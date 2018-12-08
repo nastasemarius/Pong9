@@ -32,6 +32,7 @@ namespace Pong9.Repositories
         {
             var invite = Invite.CreateInvite();
             invite.UpdateInvite(inviteDto.Source, inviteDto.Destination, inviteDto.Booking);
+
             _applicationDbContext.Invites.Add(invite);
             _applicationDbContext.SaveChanges();
         }
@@ -40,6 +41,8 @@ namespace Pong9.Repositories
         {
             var inviteToEdit = _applicationDbContext.Invites.Find(id);
             inviteToEdit.UpdateInvite(inviteDto.Source, inviteDto.Destination, inviteDto.Booking);
+
+            _applicationDbContext.Invites.Update(inviteToEdit);
             _applicationDbContext.SaveChanges();
         }
 

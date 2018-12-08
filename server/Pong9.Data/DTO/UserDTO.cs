@@ -1,5 +1,6 @@
-﻿using Pong9.Data.Entities;
-using Pong9.Data.Enums;
+﻿using Pong9.Data.Enums;
+using System;
+using Pong9.Data.Entities;
 
 namespace Pong9.Data.DTO
 {
@@ -15,10 +16,10 @@ namespace Pong9.Data.DTO
 
         public string LastName { get; set; }
 
-        public StatusType Status { get; set; }
+        public StatusType? Status { get; set; }
 
-        public WorkSpace WorkSpaceId { get; set; }
+        public string WorkSpaceId { get; set; }
 
-        public UserRole Roles { get; set; }
+        public UserRole? Roles { get; set; }
     }
 }

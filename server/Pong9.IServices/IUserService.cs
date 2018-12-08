@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using Pong9.Data.DTO;
 using Pong9.Data.Entities;
+using Pong9.Services.Helpers;
 
 namespace Pong9.IServices
 {
@@ -9,5 +9,6 @@ namespace Pong9.IServices
     {
         User Authenticate(string username, string password);
         void Create(string username, string email, string password);
+        bool UpdateProfile(Guid userId, UserDTO userDto);
     }
 }
