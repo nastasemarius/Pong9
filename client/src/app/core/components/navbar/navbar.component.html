@@ -9,7 +9,7 @@
       </div>
       <div *ngIf="userLoggedIn()" class="profile-options" fxLayout="row" fxLayoutAlign="end" fxFlex="20">
         <span class="profile-name" fxLayout="row" fxLayoutAlign="end center">Username</span>
-        <button class="button-exit" mat-button >
+        <button class="button-exit" mat-button (click)="logout()">
             <mat-icon>exit_to_app</mat-icon>
         </button>
       </div>

@@ -20,6 +20,7 @@ namespace Pong9.Api.Controllers
         }
 
         [AllowAnonymous]
+        [Produces("application/json")]
         [HttpPost, ActionName("authenticate")]
         public IActionResult Authenticate([FromBody]UserAuthenticateModel userParam)
         {

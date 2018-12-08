@@ -23,14 +23,13 @@ export class AuthenticationService {
   login(credentials: Credentials): Observable<any> {
     return this.httpService.post(this.loginUrl, { userName: credentials.userName, password: credentials.password }).pipe(tap(
       (res) => {
-        console.log(res);
-        localStorage.setItem(this.tokenKey, res.value);
-        this.credentialsSubject.next(this.getTokenInfo(res.value));
+        localStorage.setItem(this.tokenKey, res);
+        this.credentialsSubject.next(this.getTokenInfo(res));
       }
     ));
   }
   getToken(): any {
-    return JSON.parse(localStorage.getItem(this.tokenKey));
+    return localStorage.getItem(this.tokenKey);
   }
   register(user: User): Observable<any> {
     return this.httpService.post(this.registerUrl, user);
@@ -46,7 +45,7 @@ export class AuthenticationService {
     const token = this.getToken();
     const current_time = new Date().getTime() / 1000;
     if (token) {
-      return current_time < this.getTokenInfo(token).exp;
+      return current_time > this.getTokenInfo(token).exp;
     }
     return true;
   }
