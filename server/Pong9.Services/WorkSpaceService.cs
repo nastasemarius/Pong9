@@ -28,14 +28,13 @@ namespace Pong9.Services
             _workSpaceRepository.CreateWorkSpace(workSpaceDto);
 
             var workSpace = _workSpaceRepository.GetWorkSpaceByName(workSpaceDto.Name);
-            var userId = _userRepository.GetUserByUsername(workSpaceDto.UserName).UserId;
 
             var userDto = new UserDTO()
             {
                 WorkSpaceId = workSpace.WorkSpaceId
             };
 
-            _userRepository.EditUser(userId, userDto);
+            _userRepository.EditUser(workSpaceDto.UserId, userDto);
 
             for (var index = 0; index < workSpaceDto.NumberOfTables; ++index)
             {

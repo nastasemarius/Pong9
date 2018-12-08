@@ -26,7 +26,7 @@ namespace Pong9.Api.Controllers
             var workSpaceDto = new WorkSpaceDTO()
             {
                 Name = workSpaceModel.Name,
-                UserName = workSpaceModel.Username,
+                UserId = workSpaceModel.UserId,
                 NumberOfTables = workSpaceModel.NumberOfTables
             };
 
