@@ -1,17 +1,67 @@
 ﻿using System;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Cors;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Pong9.Api.Models.WorkSpaceModels;
 using Pong9.Data.DTO;
+using Pong9.IRepositories;
 using Pong9.IServices;
 
 namespace Pong9.Api.Controllers
 {
     [ApiController]
-    [Route("workSpace/[action]")]
+    [Route("api/[controller]")]
     public class WorkspaceController : Controller
     {
+        /*private readonly IWorkSpaceRepository _workSpaceRepository;
+
+        public WorkspaceController(IWorkSpaceRepository workSpaceRepository)
+        {
+            _workSpaceRepository = workSpaceRepository;
+        }
+
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            return Ok(_workSpaceRepository.GetAllWorkSpaces());
+        }
+
+        [HttpDelete]
+        public IActionResult Delete(Guid id)
+        {
+            var workspace = _workSpaceRepository.GetWorkSpaceById(id);
+            if (workspace == null)
+            {
+                return NotFound();
+            }
+
+            _workSpaceRepository.DeleteWorkSpace(workspace);
+
+            return Ok();
+        }
+
+        [HttpPost]
+        public IActionResult Create([FromBody]WorkSpaceDTO workSpaceDto)
+        {
+            _workSpaceRepository.CreateWorkSpace(workSpaceDto);
+
+            return Ok();
+        }
+
+        [HttpPut]
+        public IActionResult Update(Guid id, [FromBody]WorkSpaceDTO workSpaceDto)
+        {
+            var workspace = _workSpaceRepository.GetWorkSpaceById(id);
+            if (workspace == null)
+            {
+                return NotFound();
+            }
+
+            _workSpaceRepository.EditWorkSpace(id, workSpaceDto);
+
+            return Ok();
+        }*/
+
         private readonly IWorkSpaceService _workSpaceService;
 
         public WorkspaceController(IWorkSpaceService workSpaceService)
@@ -19,28 +69,15 @@ namespace Pong9.Api.Controllers
             _workSpaceService = workSpaceService;
         }
 
-        [AllowAnonymous]
-        [HttpPost, ActionName("create")]
-        public IActionResult CreateWorkSpace([FromBody] WorkSpaceCreateModel workSpaceModel)
+        [HttpPost]
+        public IActionResult CreateWorkSpace([FromBody] WorkSpaceDTO workSpaceDto)
         {
-            var workSpaceDto = new WorkSpaceDTO()
-            {
-                Name = workSpaceModel.Name,
-                UserId = workSpaceModel.UserId,
-                NumberOfTables = workSpaceModel.NumberOfTables
-            };
-
             _workSpaceService.CreateWorkSpace(workSpaceDto);
 
-            if (!_workSpaceService.GetWorkSpaceByName(workSpaceDto.Name).IsSuccess)
-            {
-                return BadRequest();
-            }
-
-            return Ok(_workSpaceService.GetWorkSpaceByName(workSpaceDto.Name));
+            return Ok();
         }
 
-        [HttpGet, ActionName("get")]
+        [HttpGet]
         public IActionResult GetWorkSpaceById(Guid id)
         {
             var workspaceResult = _workSpaceService.GetWorkSpaceById(id);
@@ -52,7 +89,7 @@ namespace Pong9.Api.Controllers
             return Ok(workspaceResult.Value);
         }
 
-        [HttpPost, ActionName("delete")]
+        [HttpDelete]
         public IActionResult DeleteWorkSpace(Guid id)
         {
             var gotDeleted = _workSpaceService.DeleteWorkSpace(id);
@@ -64,7 +101,7 @@ namespace Pong9.Api.Controllers
             return NotFound();
         }
 
-        [HttpPut, ActionName("update")]
+        [HttpPut]
         public IActionResult UpdateWorkSpace(Guid id, [FromBody] WorkSpaceDTO workSpaceDto)
         {
             var gotUpdated = _workSpaceService.UpdateWorkSpace(id, workSpaceDto);

@@ -24,6 +24,8 @@ namespace Pong9.Data.Entities
             var instance = new Booking
             {
                 BookingId = Guid.NewGuid(),
+                StartTime = DateTime.UtcNow,
+                EndTime = DateTime.UtcNow,
                 Players = new HashSet<User>()
             };
 

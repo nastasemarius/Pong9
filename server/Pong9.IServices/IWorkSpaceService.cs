@@ -11,8 +11,6 @@ namespace Pong9.IServices
     {
         void CreateWorkSpace(WorkSpaceDTO workSpaceDto);
 
-        ApiResult<WorkSpace> GetWorkSpaceByName(string name);
-
         ApiResult<WorkSpace> GetWorkSpaceById(Guid id);
 
         bool DeleteWorkSpace(Guid id);

@@ -9,7 +9,6 @@ namespace Pong9.IRepositories
     {
         IEnumerable<Booking> GetAllBookings();
         Booking GetBookingById(Guid id);
-        Booking GetBookingByStartTimeAndCreator(DateTime startTime, User creator);
         void CreateBooking(BookingDTO bookingDto);
         void EditBooking(Guid id, BookingDTO bookingDto);
         void DeleteBooking(Booking booking);

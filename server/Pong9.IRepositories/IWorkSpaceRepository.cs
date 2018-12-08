@@ -8,7 +8,6 @@ namespace Pong9.IRepositories
     public interface IWorkSpaceRepository
     {
         IEnumerable<WorkSpace> GetAllWorkSpaces();
-        WorkSpace GetWorkSpaceByName(string name);
         WorkSpace GetWorkSpaceById(Guid id);
         void CreateWorkSpace(WorkSpaceDTO workSpace);
         void EditWorkSpace(Guid id, WorkSpaceDTO workSpace);

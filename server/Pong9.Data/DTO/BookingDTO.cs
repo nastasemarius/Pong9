@@ -11,7 +11,7 @@ namespace Pong9.Data.DTO
 
         public DateTime EndTime { get; set; }
 
-        public Guid CreatorId { get; set; }
+        public User Creator { get; set; }
 
         public Guid TableId { get; set; }
 
