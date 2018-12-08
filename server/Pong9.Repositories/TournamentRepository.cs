@@ -33,6 +33,7 @@ namespace Pong9.Repositories
         {
             var tournament = Tournament.CreateTournament();
             tournament.UpdateTournament(tournamentDto.Matches, tournamentDto.Name);
+
             _applicationDbContext.Tournaments.Add(tournament);
             _applicationDbContext.SaveChanges();
         }
@@ -41,13 +42,15 @@ namespace Pong9.Repositories
         {
             var tournamentToEdit = _applicationDbContext.Tournaments.Find(id);
             tournamentToEdit.UpdateTournament(tournament.Matches, tournament.Name);
-            _applicationDbContext.Tournaments.Add(tournamentToEdit);
+
+            _applicationDbContext.Tournaments.Update(tournamentToEdit);
             _applicationDbContext.SaveChanges();
         }
 
         public void DeleteTournament(Tournament tournament)
         {
             _applicationDbContext.Tournaments.Remove(tournament);
+            _applicationDbContext.SaveChanges();
         }
     }
 }

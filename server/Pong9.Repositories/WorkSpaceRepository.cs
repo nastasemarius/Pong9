@@ -30,7 +30,7 @@ namespace Pong9.Repositories
         public void CreateWorkSpace(WorkSpaceDTO workSpaceDto)
         {
             var workSpace = WorkSpace.CreateWorkSpace();
-            workSpace.UpdateWorkSpace(workSpaceDto.Name, workSpaceDto.UrlTag, workSpaceDto.Users);
+            workSpace.UpdateWorkSpace(workSpaceDto.Name, workSpaceDto.Users);
 
             _applicationDbContext.WorkSpaces.Add(workSpace);
             _applicationDbContext.SaveChanges();
@@ -40,8 +40,9 @@ namespace Pong9.Repositories
         public void EditWorkSpace(Guid id, WorkSpaceDTO workSpaceDto)
         {
             var workSpaceEdit = _applicationDbContext.WorkSpaces.Find(id);
-            workSpaceEdit.UpdateWorkSpace(workSpaceDto.Name, workSpaceDto.UrlTag, workSpaceDto.Users);
+            workSpaceEdit.UpdateWorkSpace(workSpaceDto.Name, workSpaceDto.Users);
 
+            _applicationDbContext.WorkSpaces.Update(workSpaceEdit);
             _applicationDbContext.SaveChanges();
         }
 
@@ -50,6 +51,5 @@ namespace Pong9.Repositories
             _applicationDbContext.WorkSpaces.Remove(workSpace);
             _applicationDbContext.SaveChanges();
         }
-
     }
 }

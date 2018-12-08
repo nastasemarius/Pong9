@@ -15,16 +15,19 @@ namespace Pong9.Data.Entities
 
         public DateTime EndingHour { get; set; }
 
+        public Guid WorkSpaceId { get; set; }
+
         public ICollection<Booking> Bookings { get; set; }
 
-        public static PingPongTable CreatePingPongTable()
+        public static PingPongTable CreatePingPongTable(Guid workSpaceId)
         {
             var instance = new PingPongTable
             {
                 PingPongTableId = Guid.NewGuid(),
                 StartingHour = DateTime.UtcNow,
                 EndingHour = DateTime.UtcNow,
-                Bookings = new HashSet<Booking>()
+                Bookings = new HashSet<Booking>(),
+                WorkSpaceId = workSpaceId
             };
 
             return instance;

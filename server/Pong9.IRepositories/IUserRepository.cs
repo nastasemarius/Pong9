@@ -10,7 +10,7 @@ namespace Pong9.IRepositories
         IEnumerable<User> GetAllUsers();
         User GetUserById(Guid id);
         void CreateUser(UserDTO user);
-        void EditUser(UserDTO user);
+        void EditUser(Guid userId, UserDTO user);
         void DeleteUser(User user);
     }
 }

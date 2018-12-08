@@ -32,6 +32,7 @@ namespace Pong9.Repositories
         {
             var match = Match.CreateMatch();
             match.UpdateMatch(matchDto.Type, matchDto.BookingId, matchDto.FirstPlayer, matchDto.SecondPlayer, matchDto.FirstPlayerTeammate, matchDto.SecondPlayerTeammate);
+
             _applicationDbContext.Matches.Add(match);
             _applicationDbContext.SaveChanges();
         }
@@ -40,6 +41,8 @@ namespace Pong9.Repositories
         {
             var matchToEdit = _applicationDbContext.Matches.Find(id);
             matchToEdit.UpdateMatch(match.Type, match.BookingId, match.FirstPlayer, match.SecondPlayer, match.FirstPlayerTeammate, match.SecondPlayerTeammate);
+
+            _applicationDbContext.Matches.Update(matchToEdit);
             _applicationDbContext.SaveChanges();
         }
 

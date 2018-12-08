@@ -30,8 +30,9 @@ namespace Pong9.Repositories
 
         public void CreatePingPongTable(PingPongTableDTO pingPongTableDto)
         {
-            var pingPongTable = PingPongTable.CreatePingPongTable();
+            var pingPongTable = PingPongTable.CreatePingPongTable(pingPongTableDto.WorkingStateId);
             pingPongTable.UpdatePingPongTable(pingPongTableDto.Name, pingPongTableDto.Bookings, pingPongTableDto.StartingHour, pingPongTableDto.EndingHour);
+
             _applicationDbContext.PingPongTables.Add(pingPongTable);
             _applicationDbContext.SaveChanges();
         }
@@ -40,6 +41,8 @@ namespace Pong9.Repositories
         {
             var pingPongTableToEdit = _applicationDbContext.PingPongTables.Find(id);
             pingPongTableToEdit.UpdatePingPongTable(pingPongTableDto.Name, pingPongTableDto.Bookings, pingPongTableDto.StartingHour, pingPongTableDto.EndingHour);
+
+            _applicationDbContext.PingPongTables.Update(pingPongTableToEdit);
             _applicationDbContext.SaveChanges();
         }
 
