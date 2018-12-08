@@ -25,21 +25,30 @@ namespace Pong9.Services
 
         public void CreateWorkSpace(WorkSpaceDTO workSpaceDto)
         {
-            for (var index = 0; index < workSpaceDto.NumberOfTables; ++index)
-            {
-                _pingPongTableRepository.CreatePingPongTable(new PingPongTableDTO() { Name = "Table " + (index + 1)});
-            }
-
             _workSpaceRepository.CreateWorkSpace(workSpaceDto);
 
             var workSpace = _workSpaceRepository.GetWorkSpaceByName(workSpaceDto.Name);
             var userId = _userRepository.GetUserByUsername(workSpaceDto.UserName).UserId;
+
             var userDto = new UserDTO()
             {
                 WorkSpaceId = workSpace.WorkSpaceId
             };
 
             _userRepository.EditUser(userId, userDto);
+
+            for (var index = 0; index < workSpaceDto.NumberOfTables; ++index)
+            {
+                var pingPongDto = new PingPongTableDTO()
+                {
+                    Name = "Table" + (index + 1).ToString(),
+                    StartingHour = DateTime.Now,
+                    EndingHour = DateTime.Now,
+                    WorkingStateId = workSpace.WorkSpaceId
+                };
+
+                _pingPongTableRepository.CreatePingPongTable(pingPongDto);
+            }
         }
 
         public ApiResult<WorkSpace> GetWorkSpaceByName(string name)

@@ -8,10 +8,8 @@ using Pong9.IServices;
 
 namespace Pong9.Api.Controllers
 {
-    [Authorize]
     [ApiController]
     [Route("user/[action]")]
-    [EnableCors("MyPolicy")]
     public class UsersController : ControllerBase
     {
         private readonly IUserService _userService;

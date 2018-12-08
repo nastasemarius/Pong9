@@ -9,8 +9,7 @@ using Pong9.IServices;
 namespace Pong9.Api.Controllers
 {
     [ApiController]
-    [Route("workSpace/[controller]")]
-    [EnableCors("MyPolicy")]
+    [Route("workSpace/[action]")]
     public class WorkspaceController : Controller
     {
         private readonly IWorkSpaceService _workSpaceService;
@@ -41,7 +40,7 @@ namespace Pong9.Api.Controllers
             return Ok(_workSpaceService.GetWorkSpaceByName(workSpaceDto.Name));
         }
 
-        [HttpGet, ActionName("get/{id}")]
+        [HttpGet, ActionName("get")]
         public IActionResult GetWorkSpaceById(Guid id)
         {
             var workspaceResult = _workSpaceService.GetWorkSpaceById(id);
