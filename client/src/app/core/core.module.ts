@@ -19,7 +19,6 @@ import {
 import { FormsModule } from '@angular/forms';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { AuthenticationService } from './services/authentication.service';
-import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -58,7 +57,7 @@ import { RouterModule } from '@angular/router';
     ],
   providers: [
     ConfirmDialogComponent,
-    AuthenticationService
+    AuthenticationService,
     MatDialogModule,
   ]
 })
