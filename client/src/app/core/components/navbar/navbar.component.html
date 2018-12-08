@@ -1,18 +1,29 @@
-
 <mat-toolbar>
   <mat-toolbar-row>
     <div class="nav-bar" fxLayout="row" fxLayoutAlign="start center" fxFlexFill>
       <div fxFlex="80" fxLayout="row" fxLayoutAlign="start center">
         <div class="logo">
-          <img [src]="'/assets/images/logo.png'" alt="PONG9 LOGO"/>
+          <img [src]="'/assets/images/logo.png'" alt="PONG9 LOGO" />
         </div>
       </div>
       <div *ngIf="userLoggedIn()" class="profile-options" fxLayout="row" fxLayoutAlign="end" fxFlex="20">
+
         <span class="profile-name" fxLayout="row" fxLayoutAlign="end center">Username</span>
-        <button class="button-exit" mat-button (click)="logout()">
-            <mat-icon>exit_to_app</mat-icon>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon matTooltip="User settings">expand_more</mat-icon>
         </button>
       </div>
     </div>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="statuses">Status</button>
+      <button mat-menu-item [routerLink]="['login']">Logout</button>
+    </mat-menu>
+
+    <mat-menu #statuses="matMenu">
+      <button mat-menu-item fxLayoutAlign="start center"><span class="status green"></span><span>Available</span></button>
+      <button mat-menu-item fxLayoutAlign="start center"> <span class="status yellow"></span>Want to play</button>
+      <button mat-menu-item fxLayoutAlign="start center"> <span class="status red"></span>Busy</button>
+    </mat-menu>
   </mat-toolbar-row>
 </mat-toolbar>

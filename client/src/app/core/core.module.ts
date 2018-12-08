@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormvalidatorDirective } from './directives/formvalidator.directive';
+import { RouterModule } from '@angular/router';
 import {
   MatCardModule,
   MatIconModule,
@@ -12,18 +13,27 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatTabsModule,
-  // MatTabLabel,
-  // MatTabBody
+  MatMenuModule,
+  MatDialogModule,
+  MatRadioModule,
+  MatTooltipModule,
+  MatListModule,
+  MatBadgeModule
 } from '@angular/material';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { AuthenticationService } from './services/authentication.service';
 import { RouterModule } from '@angular/router';
+import { WorkspaceComponent } from './components/workspace/workspace.component';
 @NgModule({
   declarations: [
     NavbarComponent,
-    FormvalidatorDirective
+    FormvalidatorDirective,
+    ConfirmDialogComponent,
+    WorkspaceComponent
   ],
   imports: [
+    MatBadgeModule,
     CommonModule,
     HttpClientModule,
     MatCardModule,
@@ -35,9 +45,16 @@ import { RouterModule } from '@angular/router';
     FlexLayoutModule,
     MatTabsModule,
     FormsModule,
-    RouterModule
+    ReactiveFormsModule,
+    MatMenuModule,
+    RouterModule,
+    MatDialogModule,
+    MatRadioModule,
+    MatTooltipModule,
+    MatListModule
   ],
   exports: [
+    MatBadgeModule,
     MatInputModule,
     MatFormFieldModule,
     MatCardModule,
@@ -48,10 +65,18 @@ import { RouterModule } from '@angular/router';
     FlexLayoutModule,
     MatTabsModule,
     FormsModule,
-    RouterModule
+    ReactiveFormsModule,
+    MatMenuModule,
+    RouterModule,
+    WorkspaceComponent,
+    MatRadioModule,
+    MatTooltipModule,
+    MatListModule
   ],
   providers: [
-    AuthenticationService
+    ConfirmDialogComponent,
+    AuthenticationService,
+    MatDialogModule,
   ]
 })
 export class CoreModule { }
