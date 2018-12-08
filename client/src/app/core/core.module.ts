@@ -14,18 +14,25 @@ import {
   MatInputModule,
   MatTabsModule,
   MatMenuModule,
-  MatDialogModule
+  MatDialogModule,
+  MatRadioModule,
+  MatTooltipModule,
+  MatListModule,
+  MatBadgeModule
 } from '@angular/material';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { AuthenticationService } from './services/authentication.service';
+import { WorkspaceComponent } from './components/workspace/workspace.component';
 @NgModule({
   declarations: [
     NavbarComponent,
     FormvalidatorDirective,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    WorkspaceComponent
   ],
   imports: [
+    MatBadgeModule,
     CommonModule,
     HttpClientModule,
     MatCardModule,
@@ -37,11 +44,16 @@ import { AuthenticationService } from './services/authentication.service';
     FlexLayoutModule,
     MatTabsModule,
     FormsModule,
+    ReactiveFormsModule,
     MatMenuModule,
     RouterModule,
-    MatDialogModule
+    MatDialogModule,
+    MatRadioModule,
+    MatTooltipModule,
+    MatListModule
   ],
   exports: [
+    MatBadgeModule,
     MatInputModule,
     MatFormFieldModule,
     MatCardModule,
@@ -52,9 +64,14 @@ import { AuthenticationService } from './services/authentication.service';
     FlexLayoutModule,
     MatTabsModule,
     FormsModule,
+    ReactiveFormsModule,
     MatMenuModule,
     RouterModule,
-    ],
+    WorkspaceComponent,
+    MatRadioModule,
+    MatTooltipModule,
+    MatListModule
+  ],
   providers: [
     ConfirmDialogComponent,
     AuthenticationService,

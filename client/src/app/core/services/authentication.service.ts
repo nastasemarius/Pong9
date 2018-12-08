@@ -15,6 +15,7 @@ export class AuthenticationService {
   private loginUrl: any = `${environment.apiUrl}/user/authenticate`;
   private registerUrl: any = `${environment.apiUrl}/user/register`;
   private tokenKey = 'pong9-token';
+  private userId = 'pong9-user';
   private credentialsSubject: BehaviorSubject<any> = new BehaviorSubject({});
   public credentials: any;
   constructor(private httpService: HttpClient,
@@ -32,7 +33,11 @@ export class AuthenticationService {
     return localStorage.getItem(this.tokenKey);
   }
   register(user: User): Observable<any> {
-    return this.httpService.post(this.registerUrl, user);
+    return this.httpService.post(this.registerUrl, user).pipe(tap(
+      (res) => {
+        localStorage.setItem(this.userId, res);
+      }
+    ));
   }
   isUserAuthenticated(): boolean {
     const token = this.getToken();
@@ -48,6 +53,16 @@ export class AuthenticationService {
       return current_time > this.getTokenInfo(token).exp;
     }
     return true;
+  }
+  isUserRegistered(): boolean {
+    const userId = this.getUserId();
+    if (userId) {
+      return true;
+    }
+    return false;
+  }
+  getUserId(): any {
+    return localStorage.getItem(this.userId);
   }
   logout(): void {
     localStorage.clear();

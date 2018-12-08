@@ -22,11 +22,6 @@ namespace Pong9.Repositories
             return _applicationDbContext.WorkSpaces.ToList();
         }
 
-        public WorkSpace GetWorkSpaceByName(string name)
-        {
-            return _applicationDbContext.WorkSpaces.SingleOrDefault(workSpace => workSpace.Name == name);
-        }
-
         public WorkSpace GetWorkSpaceById(Guid id)
         {
             return _applicationDbContext.WorkSpaces.SingleOrDefault(workSpace => workSpace.WorkSpaceId == id);

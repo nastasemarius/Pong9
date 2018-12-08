@@ -31,26 +31,6 @@ namespace Pong9.Services
             }
 
             _workSpaceRepository.CreateWorkSpace(workSpaceDto);
-
-            var workSpace = _workSpaceRepository.GetWorkSpaceByName(workSpaceDto.Name);
-            var userId = _userRepository.GetUserByUsername(workSpaceDto.UserName).UserId;
-            var userDto = new UserDTO()
-            {
-                WorkSpaceId = workSpace.WorkSpaceId
-            };
-
-            _userRepository.EditUser(userId, userDto);
-        }
-
-        public ApiResult<WorkSpace> GetWorkSpaceByName(string name)
-        {
-            var workspace = _workSpaceRepository.GetWorkSpaceByName(name);
-            if (workspace == null)
-            {
-                return new ApiResult<WorkSpace>(false);
-            }
-
-            return new ApiResult<WorkSpace>(workspace);
         }
 
         public ApiResult<WorkSpace> GetWorkSpaceById(Guid id)

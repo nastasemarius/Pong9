@@ -52,4 +52,8 @@ export class UserProfileComponent implements OnInit {
 
   }
 
+  save() {
+    console.log(this.user.value);
+  }
+
 }
