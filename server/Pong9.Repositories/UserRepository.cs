@@ -82,12 +82,9 @@ namespace Pong9.Repositories
                 }
             }
 
-            if (Guid.TryParse(userDto.WorkSpaceId, out workSpaceId))
+            if (userDto.WorkSpaceId != user.WorkSpaceId)
             {
-                if (workSpaceId != user.WorkSpaceId)
-                {
-                    user.WorkSpaceId = workSpaceId;
-                }
+                user.WorkSpaceId = userDto.WorkSpaceId;
             }
 
             if (userDto.Roles.HasValue)
@@ -96,6 +93,11 @@ namespace Pong9.Repositories
                 {
                     user.Roles = userDto.Roles.Value;
                 }
+            }
+
+            if (userDto.Token != null)
+            {
+                user.Token = userDto.Token;
             }
 
             return user;

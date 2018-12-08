@@ -1,4 +1,5 @@
-﻿using Pong9.Data.Entities;
+﻿using System;
+using Pong9.Data.Entities;
 using System.Collections.Generic;
 
 namespace Pong9.Data.DTO
@@ -9,7 +10,7 @@ namespace Pong9.Data.DTO
 
         public int NumberOfTables { get; set; }
 
-        public string UserName { get; set; }
+        public Guid UserId { get; set; }
 
         public ICollection<User> Users { get; set; }
 

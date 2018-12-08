@@ -5,107 +5,63 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Pong9.Data.DTO;
 using Pong9.Data.Entities;
 using Pong9.IRepositories;
+using Pong9.IServices;
 using Pong9.Persistence;
 
 namespace Pong9.Api.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
-    public class BookingController : ControllerBase
+    [Route("api/[controller]/[action]")]
+    public class BookingController : Controller
     {
-        //private readonly IBookingRepository _bookingRepository;
+        private readonly IBookingService _bookingService;
 
-        //public BookingController(IBookingRepository bookingRepository)
-        //{
-        //    _bookingRepository = bookingRepository;
-        //}
+        public BookingController(IBookingService bookingService)
+        {
+            _bookingService = bookingService;
+        }
 
-        //// GET: api/Booking
-        //[HttpGet]
-        //public IEnumerable<Booking> GetBookings()
-        //{
-        //    return _bookingRepository.GetAllBookings();
-        //}
+        [HttpGet]
+        public IActionResult GetBookingsFromCurrentDay(Guid tableId)
+        {
+            var bookings = _bookingService.GetBookingsFromCurrentDay(tableId);
 
-        //// GET: api/Booking/5
-        //[HttpGet("{id}")]
-        //public IActionResult GetBooking([FromRoute] Guid id)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+            if (!bookings.IsSuccess)
+            {
+                return BadRequest(new {message = "No bookings from current day were found."});
+            }
 
-        //    var booking = _bookingRepository.GetBookingById(id);
+            return Ok(bookings.Value);
+        }
 
-        //    if (booking == null)
-        //    {
-        //        return NotFound();
-        //    }
+        [HttpGet]
+        public IActionResult GetUsersForBooking(Guid bookingId)
+        {
+            var users = _bookingService.GetUsersForBooking(bookingId);
 
-        //    return Ok(booking);
-        //}
+            if (!users.IsSuccess)
+            {
+                return BadRequest(new {message = "Invalid booking."});
+            }
 
-        //// PUT: api/Booking/5
-        //[HttpPut("{id}")]
-        //public IActionResult PutBooking([FromRoute] Guid id, [FromBody] Booking booking)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+            return Ok(users.Value);
+        }
 
-        //    if (id != booking.BookingId)
-        //    {
-        //        return BadRequest();
-        //    }
+        [HttpPost]
+        [HttpPost, ActionName("createBooking")]
+        public IActionResult CreateBooking([FromBody] BookingDTO bookingDto)
+        {
+            var createBookingResult = _bookingService.CreateBooking(bookingDto);
 
-        //    _bookingRepository.EditBooking(id, );
+            if (!createBookingResult.IsSuccess)
+            {
+                return BadRequest(new {message = "Failed to create booking."});
+            }
 
-        //    return NoContent();
-        //}
-
-        //// POST: api/Booking
-        //[HttpPost]
-        //public async Task<IActionResult> PostBooking([FromBody] Booking booking)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //  //  _context.Bookings.Add(booking);
-        //    await _context.SaveChangesAsync();
-
-        //    return CreatedAtAction("GetBooking", new { id = booking.BookingId }, booking);
-        //}
-
-        //// DELETE: api/Booking/5
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> DeleteBooking([FromRoute] Guid id)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    var booking = await _context.Bookings.FindAsync(id);
-        //    if (booking == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    _context.Bookings.Remove(booking);
-        //    await _context.SaveChangesAsync();
-
-        //    return Ok(booking);
-        //}
-
-        //private bool BookingExists(Guid id)
-        //{
-        //    return _context.Bookings.Any(e => e.BookingId == id);
-        //}
+            return Ok(createBookingResult.Value);
+        }
     }
 }
