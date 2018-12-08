@@ -17,7 +17,7 @@
 
     <mat-menu #menu="matMenu">
       <button mat-menu-item [matMenuTriggerFor]="statuses">Status</button>
-      <button mat-menu-item [routerLink]="['login']">Logout</button>
+      <button mat-menu-item (click)="logout()">Logout</button>
     </mat-menu>
 
     <mat-menu #statuses="matMenu">

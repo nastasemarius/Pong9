@@ -3,29 +3,36 @@
     <mat-card>
       <mat-tab-group>
         <mat-tab label="Create workspace">
-          <form [formGroup]="newWorkspace" *ngIf="newWorkspace">
+          <form class="form-style" #workSpaceForm="ngForm" fxLayout="column">
             <mat-form-field>
-              <input placeholder="Workspace name" type="text" matInput formControlName="name">
+              <input placeholder="Workspace name" type="text" matInput name="workspaceName" [(ngModel)]="newWorkspace.name"
+                required>
+              <mat-error>Invalid input!</mat-error>
             </mat-form-field>
             <mat-form-field>
-              <input placeholder="Number of tables" type="text" matInput formControlName="numberOfTables">
-              <span matSuffix>tables</span>
+              <input placeholder="Number of tables" type="number" [min]="1" matInput name="numberOfTables" [(ngModel)]="newWorkspace.numberOfTables"
+                required>
+              <mat-error>Invalid input!</mat-error>
             </mat-form-field>
             <mat-form-field>
-              <input placeholder="Player capacity" type="number" matInput formControlName="playerCapacity">
-              <span matSuffix>players</span>
+              <input placeholder="Player capacity" type="number" [min]="2" matInput name="numberOfUsers" [(ngModel)]="newWorkspace.numberOfUsers"
+                required>
+              <mat-error>Invalid input!</mat-error>
             </mat-form-field>
-
           </form>
+          <div>
+            <button mat-raised-button color="primary" [disabled]="workSpaceForm.invalid" (click)="submitWorkspace()">Submit</button>
+          </div>
         </mat-tab>
         <mat-tab label="Select existing workspace">
-          <mat-radio-group>
+          <mat-radio-group fxLayout="column" class="form-style" [(ngModel)]="selectedWorkspace">
             <mat-radio-button class="item" *ngFor="let workspace of workspaces" [value]="workspace.name" color="primary">{{workspace.name}}</mat-radio-button>
           </mat-radio-group>
+          <div>
+            <button mat-raised-button color="primary" [disabled]="!selectedWorkspace" (click)="submitWorkspace()">Submit</button>
+          </div>
         </mat-tab>
       </mat-tab-group>
-      <button mat-raised-button color="primary" (click)="submitWorkspace()">Submit</button>
-      <button mat-button (click)="skipWorkspaceSelection()">Skip</button>
     </mat-card>
   </div>
 </div>
