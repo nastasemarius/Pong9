@@ -23,7 +23,6 @@ import {
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { AuthenticationService } from './services/authentication.service';
-import { RouterModule } from '@angular/router';
 import { WorkspaceComponent } from './components/workspace/workspace.component';
 @NgModule({
   declarations: [

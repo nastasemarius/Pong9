@@ -6,6 +6,7 @@ import { DashboardComponent } from './users/dashboard/dashboard.component';
 import { RegistrationComponent } from './authentication/registration/registration.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { WorkspaceComponent } from './core/components/workspace/workspace.component';
+import { WorkspaceGuard } from './core/guards/workspace.guard';
 const routes: Routes = [
   // {path: '', redirectTo: 'login', pathMatch: 'full'},
   {
@@ -27,7 +28,8 @@ const routes: Routes = [
   },
   {
     path: 'workspace',
-    component: WorkspaceComponent
+    component: WorkspaceComponent,
+    canActivate: [WorkspaceGuard]
   }
 ];
 

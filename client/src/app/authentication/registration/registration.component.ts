@@ -19,7 +19,7 @@ export class RegistrationComponent implements OnInit {
   }
   register(): void {
     this.authService.register(this.newUser).subscribe(() => {
-      // this.router.navigate(['']);
+      this.router.navigate(['/workspace']);
     });
   }
   checkPasswordsMatch(): boolean {
