@@ -14,9 +14,13 @@ import {
   MatInputModule,
   MatTabsModule,
   MatMenuModule,
-  MatDialogModule
+  MatDialogModule,
+  MatRadioModule,
+  MatTooltipModule,
+  MatListModule,
+  MatBadgeModule
 } from '@angular/material';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { AuthenticationService } from './services/authentication.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -29,6 +33,7 @@ import { WorkspaceComponent } from './components/workspace/workspace.component';
     WorkspaceComponent
   ],
   imports: [
+    MatBadgeModule,
     CommonModule,
     HttpClientModule,
     MatCardModule,
@@ -40,11 +45,16 @@ import { WorkspaceComponent } from './components/workspace/workspace.component';
     FlexLayoutModule,
     MatTabsModule,
     FormsModule,
+    ReactiveFormsModule,
     MatMenuModule,
     RouterModule,
-    MatDialogModule
+    MatDialogModule,
+    MatRadioModule,
+    MatTooltipModule,
+    MatListModule
   ],
   exports: [
+    MatBadgeModule,
     MatInputModule,
     MatFormFieldModule,
     MatCardModule,
@@ -55,9 +65,14 @@ import { WorkspaceComponent } from './components/workspace/workspace.component';
     FlexLayoutModule,
     MatTabsModule,
     FormsModule,
+    ReactiveFormsModule,
     MatMenuModule,
     RouterModule,
-    ],
+    WorkspaceComponent,
+    MatRadioModule,
+    MatTooltipModule,
+    MatListModule
+  ],
   providers: [
     ConfirmDialogComponent,
     MatDialogModule,

@@ -1,3 +1,31 @@
-<p>
-  workspace works!
-</p>
+<div fxLayout="row" fxLayoutAlign="center">
+  <div class="workspace-container" fxFlex="60" fxLayout="column">
+    <mat-card>
+      <mat-tab-group>
+        <mat-tab label="Create workspace">
+          <form [formGroup]="newWorkspace" *ngIf="newWorkspace">
+            <mat-form-field>
+              <input placeholder="Workspace name" type="text" matInput formControlName="name">
+            </mat-form-field>
+            <mat-form-field>
+              <input placeholder="Number of tables" type="text" matInput formControlName="numberOfTables">
+              <span matSuffix>tables</span>
+            </mat-form-field>
+            <mat-form-field>
+              <input placeholder="Player capacity" type="number" matInput formControlName="playerCapacity">
+              <span matSuffix>players</span>
+            </mat-form-field>
+
+          </form>
+        </mat-tab>
+        <mat-tab label="Select existing workspace">
+          <mat-radio-group>
+            <mat-radio-button class="item" *ngFor="let workspace of workspaces" [value]="workspace.name" color="primary">{{workspace.name}}</mat-radio-button>
+          </mat-radio-group>
+        </mat-tab>
+      </mat-tab-group>
+      <button mat-raised-button color="primary" (click)="submitWorkspace()">Submit</button>
+      <button mat-button (click)="skipWorkspaceSelection()">Skip</button>
+    </mat-card>
+  </div>
+</div>

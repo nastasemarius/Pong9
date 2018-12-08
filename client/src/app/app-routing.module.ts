@@ -4,7 +4,7 @@ import { UserProfileComponent } from './users/user-profile/user-profile.componen
 import { LoginComponent } from './authentication/login/login.component';
 import { DashboardComponent } from './users/dashboard/dashboard.component';
 import { RegistrationComponent } from './authentication/registration/registration.component';
-
+import { WorkspaceComponent } from './core/components/workspace/workspace.component';
 const routes: Routes = [
   // {path: '', redirectTo: 'login', pathMatch: 'full'},
   {
@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent
+  },
+  {
+    path: 'workspace',
+    component: WorkspaceComponent
   }
 ];
 

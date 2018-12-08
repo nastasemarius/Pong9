@@ -1,32 +1,52 @@
 <div class="dashboard-container">
-    <div class="content">
-      <div class="main-content">
-        <mat-tab-group>
-          <mat-tab>
-            <ng-template mat-tab-label>
-              <mat-icon>account_circle</mat-icon>
-            </ng-template>
-            <div>
-              <app-user-profile></app-user-profile>
-            </div>
-          </mat-tab>
-          <mat-tab>
-            <ng-template mat-tab-label>
-              <mat-icon>notifications</mat-icon>
-            </ng-template>
-            <div>
-              Notifications
-            </div>
-          </mat-tab>
-          <mat-tab>
-            <ng-template mat-tab-label>
-              <mat-icon>dashboard</mat-icon>
-            </ng-template>
-            <div>
-              Book a table
-            </div>
-          </mat-tab>
-        </mat-tab-group>
-      </div>
+  <div class="content">
+    <div class="main-content">
+      <mat-tab-group>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon matTooltip="User profile">account_circle</mat-icon>
+          </ng-template>
+          <div>
+            <app-user-profile></app-user-profile>
+          </div>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon matTooltip="User profile">people</mat-icon>
+          </ng-template>
+          <div>
+            <h2>Contacts</h2>
+            <mat-list>
+              <mat-list-item *ngFor="let user of users" fxLayout="column">
+                <span fxLayoutAlign="left" class="status" [ngClass]="mapStatusToColor(user.status || 'offline')"></span>
+                <img matListAvatar src="https://api.adorable.io/avatars/150/abott@adorable.png" alt="user.username">
+                <span>
+                  {{ user.username }}
+                </span>
+                <!-- <button mat-icon-button fxFlex="20%">
+                  <mat-icon>plus_one</mat-icon>
+                </button> -->
+              </mat-list-item>
+            </mat-list>
+          </div>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon matTooltip="Notifications">notifications</mat-icon>
+          </ng-template>
+          <div>
+            <h2>Notifications</h2>
+          </div>
+        </mat-tab>
+        <mat-tab *ngFor="let table of workspace.tables">
+          <ng-template mat-tab-label>
+            <mat-icon [matTooltip]="'Table ' + table.number" [matBadge]="table.number" matBadgeColor="primary">dashboard</mat-icon>
+          </ng-template>
+          <div>
+            <h2>Table {{table.number}}</h2>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
     </div>
   </div>
+</div>
