@@ -18,7 +18,7 @@ namespace Pong9.Api.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost]
+        [HttpPost, ActionName("authenticate")]
         public IActionResult Authenticate([FromBody]UserAuthenticateModel userParam)
         {
             var user = _userService.Authenticate(userParam.Username, userParam.Password);
@@ -30,7 +30,7 @@ namespace Pong9.Api.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost]
+        [HttpPost, ActionName("register")]
         public IActionResult Register([FromBody]UserRegisterModel userModel)
         {
             _userService.Create(userModel.Username, userModel.Email, userModel.Password);
