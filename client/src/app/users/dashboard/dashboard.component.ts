@@ -18,11 +18,11 @@ export class DashboardComponent implements OnInit {
       name: 'LEVI9'
     }
     this.users = [
-      { username: 'uli1994', status: 'available' },
+      { username: 'uli1994', status: 'available', avatarUrl: "https://www.whitehouse.gov/wp-content/uploads/2017/12/44_barack_obama1.jpg" },
       { username: 'johndoe25', status: 'offline' },
-      { username: 'mary112', status: 'wantsToPlay' },
+      { username: 'mary112', status: 'wantsToPlay', avatarUrl: "https://media.gettyimages.com/photos/ace-frehley-of-kiss-studio-portrait-united-states-1996-picture-id558874613?s=612x612" },
       { username: 'vg112', status: 'playing' },
-      { username: 'dds115', status: 'busy' },
+      { username: 'dds115', status: 'busy', avatarUrl: 'https://i.imgur.com/KGbJY0A.jpg' },
     ]
   }
 

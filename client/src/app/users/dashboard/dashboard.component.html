@@ -19,7 +19,8 @@
             <mat-list>
               <mat-list-item *ngFor="let user of users" fxLayout="column">
                 <span fxLayoutAlign="left" class="status" [ngClass]="mapStatusToColor(user.status || 'offline')"></span>
-                <img matListAvatar src="https://api.adorable.io/avatars/150/abott@adorable.png" alt="user.username">
+                <img matListAvatar [src]="user.avatarUrl || 'https://api.adorable.io/avatars/150/abott@adorable.png'"
+                  alt="user.username">
                 <span>
                   {{ user.username }}
                 </span>
