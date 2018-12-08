@@ -15,10 +15,10 @@
             <mat-icon matTooltip="User profile">people</mat-icon>
           </ng-template>
           <div>
-            <h2>Contacts</h2>
+            <h2>Users</h2>
             <mat-list>
               <mat-list-item *ngFor="let user of users" fxLayout="column">
-                <span fxLayoutAlign="left" class="status" [ngClass]="mapStatusToColor(user.status || 'offline')"></span>
+                <span fxLayoutAlign="left" class="status" [ngClass]="mapStatusToColor(user.status || 3)"></span>
                 <img matListAvatar [src]="user.avatarUrl || 'https://api.adorable.io/avatars/150/abott@adorable.png'"
                   alt="user.username">
                 <span>
