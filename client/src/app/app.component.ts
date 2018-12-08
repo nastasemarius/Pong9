@@ -8,27 +8,11 @@ import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
 export class AppComponent implements OnInit {
   title = 'Pong9';
 
-  private hubConnection: HubConnection;
-  message = '';
-  userId: number;
-  messages: string[] = [];
-
   constructor() { }
 
   ngOnInit() {
-    this.hubConnection = new HubConnectionBuilder().withUrl('/notification').build();
 
-    this.hubConnection
-      .start()
-      .then(() => console.log('Connection started!'))
-      .catch(err => console.log('Error while establishing connection :('));
-
-      this.hubConnection.on('receive', (userId, receivedMessage) => {
-        const text = `${userId}: ${receivedMessage}`;
-        console.log(text);
-      });
-
-    }
+  }
 
 }
 

@@ -8,7 +8,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { WorkspaceComponent } from './core/components/workspace/workspace.component';
 import { WorkspaceGuard } from './core/guards/workspace.guard';
 const routes: Routes = [
-  // {path: '', redirectTo: 'login', pathMatch: 'full'},
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'login',
     component: LoginComponent
